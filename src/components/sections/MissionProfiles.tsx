@@ -35,18 +35,26 @@ const profiles = [
 
 export default function MissionProfiles() {
     return (
-        <section id="capabilities" className="py-32 bg-black relative overflow-hidden min-h-[800px] flex flex-col justify-center">
+        <section id="capabilities" className="py-20 bg-black relative overflow-hidden min-h-[600px] flex flex-col justify-center">
+            {/* Background Image - Earthrise Animation */}
+            <motion.div
+                initial={{ y: 100, opacity: 0, scale: 1.1 }}
+                whileInView={{ y: 0, opacity: 1, scale: 1 }}
+                transition={{ duration: 2.5, ease: "easeOut" }}
+                viewport={{ once: true, margin: "-10%" }}
+                className="absolute inset-0 z-0"
+            >
+                <img
+                    src="/images/earth-horizon-clean.png"
+                    alt="Earth Horizon"
+                    className="w-full h-full object-cover opacity-100"
+                />
+                {/* Minimal overlay for text readability at edges only */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
+            </motion.div>
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-12">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                        className="text-cosmic-blue font-medium tracking-[0.2em] mb-4 uppercase drop-shadow-[0_0_5px_rgba(79,195,247,0.5)]"
-                    >
-                        Capabilities
-                    </motion.h2>
+                    {/* Removed "Capabilities" text */}
                     <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
