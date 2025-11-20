@@ -1,26 +1,184 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #FFFFFF;
+
+  /* Electric Blue Colors */
+  --color-cosmic-blue: #4FC3F7;
+  --color-cosmic-blue-light: #81D4FA;
+  --color-cosmic-blue-dark: #0288D1;
+  --color-electric-blue: #4FC3F7;
+
+  /* Dark Black Colors */
+  --color-cosmic-black: #000000;
+  --color-cosmic-black-light: #111111;
+
+  /* Grays */
+  --color-gray-50: #111111;
+  --color-gray-100: #222222;
+  --color-gray-200: #333333;
+  --color-gray-900: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-cosmic-blue: var(--color-cosmic-blue);
+  --color-cosmic-blue-light: var(--color-cosmic-blue-light);
+  --color-cosmic-blue-dark: var(--color-cosmic-blue-dark);
+
+  --color-cosmic-black: var(--color-cosmic-black);
+  --color-cosmic-black-light: var(--color-cosmic-black-light);
+
+  --font-heading: var(--font-heading), sans-serif;
+  --font-sans: var(--font-body), sans-serif;
+  --font-body: var(--font-body), sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar - Overlay Style */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #E5E7EB transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Hero Section Animations */
+@keyframes earth-rise {
+  0% {
+    transform: translate3d(0, 100%, 0) rotate(0deg) scale(1.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(10%, 0, 0) rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes earth-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.animate-earth-rise {
+  animation: earth-rise 8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.animate-earth-float {
+  animation: earth-float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite alternate;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Hero Section Animations - Horizon Glow */
+@keyframes horizon-pulse {
+
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(1.05);
+  }
+}
+
+@keyframes ray-shimmer {
+  0% {
+    opacity: 0.3;
+    transform: translateY(0) scaleY(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translateY(-10px) scaleY(1.1);
+  }
+
+  100% {
+    opacity: 0.3;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.animate-horizon-pulse {
+  animation: horizon-pulse 6s ease-in-out infinite;
+}
+
+.animate-ray-shimmer {
+  animation: ray-shimmer 8s ease-in-out infinite;
 }
