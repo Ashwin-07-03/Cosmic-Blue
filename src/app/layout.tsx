@@ -15,7 +15,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Cosmic Blue | Redefining Space Access",
+  title: "MAKING LAUNCHES AS ROUTINE AS RIDES",
   description: "100% Reusable. Sub-$1,200/kg. Weekly Cadence.",
 };
 
