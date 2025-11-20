@@ -15,8 +15,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "MAKING LAUNCHES AS ROUTINE AS RIDES",
-  description: "100% Reusable. Sub-$1,200/kg. Weekly Cadence.",
+  title: "COSMIC BLUE",
+  description: "Making space accessible for everyone",
 };
 
 export default function RootLayout({
