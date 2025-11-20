@@ -65,48 +65,51 @@ export default function MissionPage() {
         <main className="bg-black min-h-screen">
             <Navbar />
             {/* Hero Section */}
-            <section className="py-32 bg-black relative overflow-hidden">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="max-w-4xl mx-auto text-center"
-                    >
-                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-body">
-                            Our Mission
-                        </h1>
-                        <p className="text-xl text-gray-400 leading-relaxed">
-                            Making space accessible, affordable, and sustainable for everyone
-                        </p>
-                    </motion.div>
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src="/images/mission-hero.png"
+                        alt="Mission Control Spaceport"
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
                 </div>
-            </section>
 
-            {/* Stats Section */}
-            <section ref={ref} className="py-20 bg-black">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+                <div className="container mx-auto px-6 relative z-10 pt-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="max-w-5xl mx-auto text-center"
+                    >
+                        <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 font-heading tracking-tight drop-shadow-2xl">
+                            OUR MISSION
+                        </h1>
+                        <p className="text-2xl md:text-3xl text-gray-200 leading-relaxed font-light max-w-3xl mx-auto mb-16 drop-shadow-lg">
+                            Making space accessible, affordable, and sustainable for everyone.
+                        </p>
+
+                        {/* Integrated Stats */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 border-t border-white/20 pt-12 backdrop-blur-sm bg-white/5 rounded-2xl p-8">
                             {stats.map((stat, index) => (
                                 <motion.div
                                     key={stat.id}
                                     initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                                    viewport={{ once: true }}
-                                    className="text-center"
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
+                                    className="text-center group"
                                 >
-                                    <div className="text-7xl md:text-8xl font-bold text-white tracking-tight mb-4 font-body leading-none">
-                                        <ScrambleText text={stat.value} trigger={isInView} />
+                                    <div className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-2 font-body group-hover:text-cosmic-blue transition-colors duration-300">
+                                        <ScrambleText text={stat.value} trigger={true} />
                                     </div>
-                                    <div className="text-sm uppercase tracking-[0.3em] text-cosmic-blue font-bold font-body">
+                                    <div className="text-sm uppercase tracking-[0.3em] text-gray-400 font-bold font-body group-hover:text-white transition-colors duration-300">
                                         {stat.label}
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
