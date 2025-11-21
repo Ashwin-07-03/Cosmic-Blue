@@ -1,60 +1,31 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
-
-const videos = [
-    { src: "/videos/49981-459802291.mp4", startTime: 0, duration: 5000 },
-    { src: "/videos/140111-774507949.mp4", startTime: 0, duration: 5000 },
-    { src: "/videos/88207-602915574.mp4", startTime: 7, duration: 5000 },
-    { src: "/videos/31377-386628887.mp4", startTime: 0, duration: 6000 }
-];
 
 
 export default function MissionPage() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
-        }, videos[currentVideoIndex].duration);
-        return () => clearTimeout(timer);
-    }, [currentVideoIndex]);
 
     return (
         <main className="bg-black min-h-screen">
             <Navbar />
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
-                {/* Background Video Slideshow */}
+                {/* Background Video */}
                 <div className="absolute inset-0 z-0">
-                    <AnimatePresence mode="popLayout">
-                        <motion.div
-                            key={currentVideoIndex}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 1.5, ease: "easeInOut" }}
-                            className="absolute inset-0 w-full h-full"
-                        >
-                            <video
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                className="w-full h-full object-cover"
-                                onLoadedMetadata={(e) => {
-                                    e.currentTarget.currentTime = videos[currentVideoIndex].startTime;
-                                }}
-                            >
-                                <source src={videos[currentVideoIndex].src} type="video/mp4" />
-                            </video>
-                        </motion.div>
-                    </AnimatePresence>
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover"
+                    >
+                        <source src="/videos/31377-386628887.mp4" type="video/mp4" />
+                    </video>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
