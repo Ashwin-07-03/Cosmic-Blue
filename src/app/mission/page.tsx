@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
 
@@ -9,6 +9,7 @@ import Navbar from "@/components/sections/Navbar";
 export default function MissionPage() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
     return (
         <main className="bg-black min-h-screen">
@@ -22,18 +23,29 @@ export default function MissionPage() {
                         muted
                         loop
                         playsInline
-                        className="w-full h-full object-cover"
+                        preload="auto"
+                        poster="/images/mission-hero.png"
+                        className={`w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
+                        onLoadedData={() => setIsVideoLoaded(true)}
                     >
                         <source src="/videos/31377-386628887.mp4" type="video/mp4" />
                     </video>
+                    {/* Poster Image (visible until video loads) */}
+                    <div className={`absolute inset-0 bg-black transition-opacity duration-1000 ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
+                        <img
+                            src="/images/mission-hero.png"
+                            alt="Mission Background"
+                            className="w-full h-full object-cover opacity-50"
+                        />
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
+                        animate={isVideoLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
                         className="max-w-5xl mx-auto text-center"
                     >
                         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
