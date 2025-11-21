@@ -40,11 +40,26 @@ export default function MissionPage() {
         }
     }, [currentVideoIndex, activePlayer]);
 
+    const handleVideoTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+        const video = e.currentTarget;
+        const timeRemaining = video.duration - video.currentTime;
+
+        // Start transition 500ms before video ends
+        if (timeRemaining <= 0.5 && timeRemaining > 0.4) {
+            const nextIndex = (currentVideoIndex + 1) % videos.length;
+            const nextPlayer = activePlayer === 0 ? 1 : 0;
+
+            // Swap active player and update index
+            setActivePlayer(nextPlayer);
+            setCurrentVideoIndex(nextIndex);
+        }
+    };
+
     const handleVideoEnd = () => {
+        // Fallback in case timeUpdate didn't trigger
         const nextIndex = (currentVideoIndex + 1) % videos.length;
         const nextPlayer = activePlayer === 0 ? 1 : 0;
 
-        // Swap active player and update index
         setActivePlayer(nextPlayer);
         setCurrentVideoIndex(nextIndex);
     };
@@ -56,15 +71,19 @@ export default function MissionPage() {
             <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
                 {/* Background Video - Dual Video System */}
                 <div className="absolute inset-0 z-0">
+                    {/* Solid black background to prevent gaps */}
+                    <div className="absolute inset-0 bg-black z-0" />
+
                     {/* Video Player 1 */}
                     <video
                         ref={videoRefs[0]}
                         muted
                         playsInline
                         preload="auto"
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${activePlayer === 0 ? "opacity-100 z-10" : "opacity-0 z-0"
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out ${activePlayer === 0 ? "opacity-100 z-10" : "opacity-0 z-5"
                             }`}
                         onLoadedData={() => setIsVideoLoaded(true)}
+                        onTimeUpdate={handleVideoTimeUpdate}
                         onEnded={handleVideoEnd}
                     />
 
@@ -74,8 +93,9 @@ export default function MissionPage() {
                         muted
                         playsInline
                         preload="auto"
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${activePlayer === 1 ? "opacity-100 z-10" : "opacity-0 z-0"
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out ${activePlayer === 1 ? "opacity-100 z-10" : "opacity-0 z-5"
                             }`}
+                        onTimeUpdate={handleVideoTimeUpdate}
                         onEnded={handleVideoEnd}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
