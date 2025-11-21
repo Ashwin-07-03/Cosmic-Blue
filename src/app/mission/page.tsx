@@ -14,18 +14,16 @@ export default function MissionPage() {
             <Navbar />
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-                {/* Background */}
+                {/* Background - Calming Day Sky */}
                 <div className="absolute inset-0 z-0">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                    >
-                        <source src="/videos/88207-602915574.mp4" type="video/mp4" />
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
+                    {/* Sky gradient background */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-blue-400 via-blue-300 to-blue-200" />
+
+                    {/* Subtle light rays overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
+
+                    {/* Soft vignette for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/10" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
@@ -35,10 +33,10 @@ export default function MissionPage() {
                         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
                         className="max-w-5xl mx-auto text-center"
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
+                        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 font-heading tracking-tight">
                             OUR MISSION
                         </h1>
-                        <p className="text-lg md:text-xl text-white font-bold leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
+                        <p className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed max-w-3xl mx-auto">
                             Making space accessible, affordable, and sustainable for everyone to make life better on earth.
                         </p>
                     </motion.div>
