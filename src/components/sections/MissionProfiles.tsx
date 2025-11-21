@@ -8,7 +8,7 @@ const profiles = [
         id: "leo",
         title: "LEO",
         subtitle: "Low Earth Orbit",
-        capacity: "3,000kg",
+        capacity: "6,000kg",
         description: "Deploy satellite constellations, cargo missions to Space Station, or large payloads to low Earth orbit with high cadence and low cost.",
         x: 20, // Percentage position on X axis
         y: 80, // Percentage position on Y axis (inverted, so 80 is low)
