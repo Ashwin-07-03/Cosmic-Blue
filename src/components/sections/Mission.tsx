@@ -78,7 +78,7 @@ export default function Mission() {
                     muted
                     playsInline
                     preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover opacity-70"
+                    className="absolute inset-0 w-full h-full object-cover"
                     onEnded={(e) => {
                         // Restart immediately when ended
                         const video = e.currentTarget;
@@ -86,10 +86,10 @@ export default function Mission() {
                         video.play();
                     }}
                 >
-                    <source src="/videos/mission-background.mp4" type="video/mp4" />
+                    <source src="/videos/189455-885804454_medium.mp4" type="video/mp4" />
                 </video>
                 {/* Light gradient overlay only */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10 h-full pt-16">
