@@ -6,6 +6,7 @@ import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
 
 const videos = [
+    "/videos/176935-856259161.mp4",
     "/videos/31377-386628887.mp4",
     "/videos/88207-602915574.mp4"
 ];
