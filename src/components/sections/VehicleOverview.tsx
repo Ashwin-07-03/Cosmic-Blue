@@ -24,7 +24,25 @@ const features = [
 
 export default function VehicleOverview() {
     return (
-        <section id="vehicle" className="py-24 bg-black relative overflow-hidden">
+        <section id="vehicle" className="py-24 relative overflow-hidden bg-[#050505]">
+            {/* Technical Background */}
+            <div className="absolute inset-0 z-0 opacity-20">
+                {/* Grid Pattern */}
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(to right, #ffffff 1px, transparent 1px),
+                            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
+                        `,
+                        backgroundSize: '40px 40px',
+                        opacity: 0.1
+                    }}
+                />
+                {/* Radial Glow */}
+                <div className="absolute inset-0 bg-radial-at-c from-blue-900/20 via-transparent to-transparent" />
+            </div>
+
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
