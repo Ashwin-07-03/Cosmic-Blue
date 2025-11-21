@@ -164,7 +164,7 @@ export default function MissionPage() {
                             {[
                                 { phase: "Phase 1", title: "Engine Design & Analysis", desc: "Initial conceptualization and computational fluid dynamics simulations." },
                                 { phase: "Phase 2", title: "Engine Component Development", desc: "Prototyping and testing of turbopumps, injectors, and combustion chambers." },
-                                { phase: "Phase 3", title: "Integrated Subsystem Testing", subtitle: "(Fluid Path Integration)", desc: "Full system integration tests to verify fluid dynamics and control systems." },
+                                { phase: "Phase 3", title: "Integrated Subsystem Testing", desc: "Full system integration tests to verify fluid dynamics and control systems." },
                                 { phase: "Phase 4", title: "Single Engine Qualification", desc: "Rigorous hot-fire testing to certify engine performance and reliability." },
                                 { phase: "Phase 5", title: "Cluster Integration & Flight Qualification", desc: "Multi-engine integration and final flight readiness reviews." }
                             ].map((item, index) => (
@@ -188,7 +188,7 @@ export default function MissionPage() {
                                             {item.subtitle && (
                                                 <p className="text-blue-200 text-sm mb-1 font-medium">{item.subtitle}</p>
                                             )}
-                                            <p className="text-gray-100 text-sm leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
+                                            <p className="text-white text-sm leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
                                                 {index % 2 !== 0 && (
                                                     <span className="md:ml-0 md:mr-auto block">{item.desc}</span>
                                                 )}
