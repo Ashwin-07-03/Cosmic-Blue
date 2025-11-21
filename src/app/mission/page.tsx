@@ -1,110 +1,29 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
-
-const videos = [
-    "/videos/176935-856259161.mp4",
-    "/videos/31377-386628887.mp4",
-    "/videos/88207-602915574.mp4"
-];
 
 export default function MissionPage() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-    const [activePlayer, setActivePlayer] = useState(0); // 0 or 1 to track which video element is active
-    const videoRefs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
-
-    // Update video sources when index changes
-    useEffect(() => {
-        const currentVideoElement = videoRefs[activePlayer].current;
-        const nextPlayer = activePlayer === 0 ? 1 : 0;
-        const nextVideoElement = videoRefs[nextPlayer].current;
-
-        if (currentVideoElement) {
-            // Set current video source and play
-            currentVideoElement.src = videos[currentVideoIndex];
-            currentVideoElement.load();
-            currentVideoElement.play().catch(() => { });
-        }
-
-        if (nextVideoElement) {
-            // Preload next video
-            const nextIndex = (currentVideoIndex + 1) % videos.length;
-            nextVideoElement.src = videos[nextIndex];
-            nextVideoElement.load();
-        }
-    }, [currentVideoIndex, activePlayer]);
-
-    const handleVideoTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-        const video = e.currentTarget;
-        const timeRemaining = video.duration - video.currentTime;
-
-        // Start transition 500ms before video ends
-        if (timeRemaining <= 0.5 && timeRemaining > 0.4) {
-            const nextIndex = (currentVideoIndex + 1) % videos.length;
-            const nextPlayer = activePlayer === 0 ? 1 : 0;
-
-            // Swap active player and update index
-            setActivePlayer(nextPlayer);
-            setCurrentVideoIndex(nextIndex);
-        }
-    };
-
-    const handleVideoEnd = () => {
-        // Fallback in case timeUpdate didn't trigger
-        const nextIndex = (currentVideoIndex + 1) % videos.length;
-        const nextPlayer = activePlayer === 0 ? 1 : 0;
-
-        setActivePlayer(nextPlayer);
-        setCurrentVideoIndex(nextIndex);
-    };
 
     return (
         <main className="bg-black min-h-screen">
             <Navbar />
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
-                {/* Background Video - Dual Video System */}
+                {/* Background */}
                 <div className="absolute inset-0 z-0">
-                    {/* Solid black background to prevent gaps */}
                     <div className="absolute inset-0 bg-black z-0" />
-
-                    {/* Video Player 1 */}
-                    <video
-                        ref={videoRefs[0]}
-                        muted
-                        playsInline
-                        preload="auto"
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out ${activePlayer === 0 ? "opacity-100 z-10" : "opacity-0 z-5"
-                            }`}
-                        onLoadedData={() => setIsVideoLoaded(true)}
-                        onTimeUpdate={handleVideoTimeUpdate}
-                        onEnded={handleVideoEnd}
-                    />
-
-                    {/* Video Player 2 */}
-                    <video
-                        ref={videoRefs[1]}
-                        muted
-                        playsInline
-                        preload="auto"
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out ${activePlayer === 1 ? "opacity-100 z-10" : "opacity-0 z-5"
-                            }`}
-                        onTimeUpdate={handleVideoTimeUpdate}
-                        onEnded={handleVideoEnd}
-                    />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
-                        animate={isVideoLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
                         className="max-w-5xl mx-auto text-center"
                     >
