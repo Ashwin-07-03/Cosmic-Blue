@@ -14,16 +14,18 @@ export default function MissionPage() {
             <Navbar />
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-                {/* Background - Calming Day Sky */}
+                {/* Background Video */}
                 <div className="absolute inset-0 z-0">
-                    {/* Sky gradient background */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-blue-400 via-blue-300 to-blue-200" />
-
-                    {/* Subtle light rays overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
-
-                    {/* Soft vignette for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/10" />
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                    >
+                        <source src="/videos/88207-602915574.mp4" type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
@@ -33,19 +35,31 @@ export default function MissionPage() {
                         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
                         className="max-w-5xl mx-auto text-center"
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 font-heading tracking-tight">
+                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
                             OUR MISSION
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed max-w-3xl mx-auto">
+                        <p className="text-lg md:text-xl text-white font-bold leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
                             Making space accessible, affordable, and sustainable for everyone to make life better on earth.
                         </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Mission Details */}
-            <section className="py-20 bg-black">
-                <div className="container mx-auto px-6">
+            {/* Mission Details - Space for Everyone */}
+            <section className="py-20 relative overflow-hidden">
+                {/* Calming Day Sky Background */}
+                <div className="absolute inset-0 z-0">
+                    {/* Sky gradient background */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-blue-400 via-blue-300 to-blue-200" />
+
+                    {/* Subtle light rays overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
+
+                    {/* Soft vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/10" />
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10">
                     <div className="max-w-4xl mx-auto">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -53,10 +67,10 @@ export default function MissionPage() {
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl font-bold text-white mb-8 font-body">
+                            <h2 className="text-4xl font-bold text-gray-900 mb-8 font-body">
                                 Space for Everyone
                             </h2>
-                            <div className="space-y-6 text-gray-300 leading-relaxed">
+                            <div className="space-y-6 text-gray-800 leading-relaxed">
                                 <p>
                                     We believe that humanity's future lies among the stars. By reducing the cost of launch,
                                     we open the door to a new era of exploration, innovation, and discovery.
@@ -81,7 +95,7 @@ export default function MissionPage() {
                         >
                             <Link
                                 href="/"
-                                className="inline-block px-8 py-4 text-white text-sm font-bold tracking-[0.2em] uppercase border border-white/30 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-cosmic-blue transition-all duration-300"
+                                className="inline-block px-8 py-4 text-white text-sm font-bold tracking-[0.2em] uppercase border border-gray-800 bg-gray-900 hover:bg-gray-800 hover:border-gray-700 transition-all duration-300"
                             >
                                 ← Back to Home
                             </Link>
