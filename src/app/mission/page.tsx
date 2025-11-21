@@ -13,7 +13,7 @@ export default function MissionPage() {
         <main className="bg-black min-h-screen">
             <Navbar />
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
                     <video
@@ -35,10 +35,10 @@ export default function MissionPage() {
                         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
                         className="max-w-5xl mx-auto text-center"
                     >
-                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
+                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
                             OUR MISSION
                         </h1>
-                        <p className="text-xl md:text-2xl text-white font-bold leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
+                        <p className="text-lg md:text-xl text-white font-bold leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
                             Making space accessible, affordable, and sustainable for everyone to make life better on earth.
                         </p>
                     </motion.div>
