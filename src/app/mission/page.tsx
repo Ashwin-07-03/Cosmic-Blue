@@ -69,7 +69,7 @@ export default function MissionPage() {
                             <h2 className="text-5xl font-bold text-white mb-10 font-heading tracking-tight drop-shadow-lg">
                                 Space for Everyone
                             </h2>
-                            <div className="space-y-8 text-lg md:text-xl text-gray-200 font-medium leading-relaxed drop-shadow-md">
+                            <div className="space-y-8 text-lg md:text-xl text-white font-medium leading-relaxed drop-shadow-md">
                                 <p>
                                     We believe that humanity's future lies among the stars. By reducing the cost of launch,
                                     we open the door to a new era of exploration, innovation, and discovery.
@@ -188,7 +188,7 @@ export default function MissionPage() {
                                             {item.subtitle && (
                                                 <p className="text-blue-200 text-sm mb-1 font-medium">{item.subtitle}</p>
                                             )}
-                                            <p className="text-gray-300 text-sm leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
+                                            <p className="text-gray-100 text-sm leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
                                                 {index % 2 !== 0 && (
                                                     <span className="md:ml-0 md:mr-auto block">{item.desc}</span>
                                                 )}
@@ -207,7 +207,7 @@ export default function MissionPage() {
                                         ${index === 3 ? 'md:translate-x-[150px]' : ''}
                                         ${index === 4 ? 'md:translate-x-0' : ''}
                                     `}>
-                                        <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75" />
+                                        <div className="absolute inset-0 bg-blue-400 rounded-full opacity-75" />
                                     </div>
 
                                     {/* Spacer for layout balance */}
