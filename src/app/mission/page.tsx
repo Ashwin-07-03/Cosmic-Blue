@@ -109,9 +109,9 @@ export default function MissionPage() {
                     <img
                         src="/images/stratosphere-left-angle-clear.png"
                         alt="Cosmic Background"
-                        className="absolute inset-0 w-full h-full object-cover opacity-80"
+                        className="absolute inset-0 w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
