@@ -103,11 +103,11 @@ export default function MissionPage() {
                 </div>
             </section>
             {/* Product Roadmap Section - Cosmic Trajectory */}
-            <section className="py-20 relative overflow-hidden">
+            <section className="py-16 relative overflow-hidden">
                 {/* Cosmic Background */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/stratosphere-sunset.png"
+                        src="/images/stratosphere-left-angle.png"
                         alt="Cosmic Background"
                         className="absolute inset-0 w-full h-full object-cover opacity-80"
                     />
@@ -120,20 +120,20 @@ export default function MissionPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-12"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-3 font-heading tracking-tight drop-shadow-lg">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 font-heading tracking-tight drop-shadow-lg">
                             Cosmic Blue Product Roadmap
                         </h2>
-                        <h3 className="text-xl md:text-2xl text-blue-400 font-bold tracking-[0.2em] uppercase drop-shadow-md">
+                        <h3 className="text-lg md:text-xl text-blue-400 font-bold tracking-[0.2em] uppercase drop-shadow-md">
                             2025-2027
                         </h3>
                     </motion.div>
 
-                    <div className="relative max-w-5xl mx-auto">
+                    <div className="relative max-w-4xl mx-auto">
                         {/* Glowing Trajectory Line (SVG) */}
                         <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-full h-full pointer-events-none hidden md:block">
-                            <svg className="w-full h-full" viewBox="0 0 800 800" preserveAspectRatio="none">
+                            <svg className="w-full h-full" viewBox="0 0 800 600" preserveAspectRatio="none">
                                 <defs>
                                     <linearGradient id="trajectory-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                         <stop offset="0%" stopColor="rgba(96, 165, 250, 0)" />
@@ -147,7 +147,7 @@ export default function MissionPage() {
                                     </filter>
                                 </defs>
                                 <motion.path
-                                    d="M 400 0 C 400 50, 250 150, 250 250 C 250 350, 550 450, 550 550 C 550 650, 400 750, 400 800"
+                                    d="M 400 0 C 400 50, 250 100, 250 200 C 250 300, 550 350, 550 450 C 550 500, 400 550, 400 600"
                                     fill="none"
                                     stroke="url(#trajectory-gradient)"
                                     strokeWidth="2"
@@ -163,7 +163,7 @@ export default function MissionPage() {
                         {/* Mobile Vertical Line */}
                         <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-blue-500/50 to-transparent md:hidden" />
 
-                        <div className="space-y-12 md:space-y-16 relative">
+                        <div className="space-y-10 relative">
                             {[
                                 { phase: "Phase 1", title: "Engine Design & Analysis", desc: "Initial conceptualization and computational fluid dynamics simulations." },
                                 { phase: "Phase 2", title: "Engine Component Development", desc: "Prototyping and testing of turbopumps, injectors, and combustion chambers." },
@@ -182,16 +182,16 @@ export default function MissionPage() {
                                     {/* Content Node */}
                                     <div className={`flex-1 pl-12 md:pl-0 ${index % 2 === 0 ? "md:text-right md:pr-16" : "md:text-left md:pl-16"}`}>
                                         <div className="relative">
-                                            <span className="text-blue-400 text-xs font-bold tracking-[0.2em] uppercase block mb-1 drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]">
+                                            <span className="text-blue-400 text-[10px] font-bold tracking-[0.2em] uppercase block mb-1 drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]">
                                                 {item.phase}
                                             </span>
-                                            <h4 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg">
+                                            <h4 className="text-xl md:text-2xl font-bold text-white mb-1 drop-shadow-lg">
                                                 {item.title}
                                             </h4>
                                             {item.subtitle && (
-                                                <p className="text-blue-200 text-base mb-1 font-medium">{item.subtitle}</p>
+                                                <p className="text-blue-200 text-sm mb-1 font-medium">{item.subtitle}</p>
                                             )}
-                                            <p className="text-gray-300 text-base leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
+                                            <p className="text-gray-300 text-sm leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
                                                 {index % 2 !== 0 && (
                                                     <span className="md:ml-0 md:mr-auto block">{item.desc}</span>
                                                 )}
@@ -203,7 +203,7 @@ export default function MissionPage() {
                                     </div>
 
                                     {/* Orbital Node (Star) */}
-                                    <div className={`absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-10
+                                    <div className={`absolute left-4 md:left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-10
                                         ${index === 0 ? 'md:translate-x-[-150px]' : ''}
                                         ${index === 1 ? 'md:translate-x-[150px]' : ''}
                                         ${index === 2 ? 'md:translate-x-[-150px]' : ''}
