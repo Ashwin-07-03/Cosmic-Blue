@@ -36,7 +36,7 @@ export default function MissionPage() {
                         className="max-w-5xl mx-auto text-center"
                     >
                         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
-                            OUR MISSION
+                            OUR VISION
                         </h1>
                         <p className="text-lg md:text-xl text-white font-bold leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
                             Making space accessible, affordable, and sustainable for everyone to make life better on earth.
@@ -100,7 +100,7 @@ export default function MissionPage() {
                 </div>
             </section>
             {/* Product Roadmap Section - Cosmic Trajectory */}
-            <section className="py-16 relative overflow-hidden">
+            <section id="roadmap" className="py-16 relative overflow-hidden">
                 {/* Cosmic Background */}
                 <div className="absolute inset-0 z-0">
                     <img
