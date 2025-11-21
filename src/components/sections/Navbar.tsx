@@ -55,7 +55,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     const navLinks = [
         {
             name: "Mission",
-            href: "/mission",
+            href: "/#mission",
             subLinks: [
                 { name: "Vision", href: "/mission" },
                 { name: "Roadmap", href: "/mission#roadmap" },
@@ -111,7 +111,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                                                 <Link
                                                     key={subLink.name}
                                                     href={subLink.href}
-                                                    className="block text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 hover:text-white transition-all"
+                                                    className="block text-[10px] font-bold tracking-[0.2em] uppercase text-white hover:text-gray-300 transition-all"
                                                 >
                                                     {subLink.name}
                                                 </Link>
