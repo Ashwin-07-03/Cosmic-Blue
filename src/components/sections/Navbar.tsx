@@ -21,6 +21,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -51,6 +52,20 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     const borderColor = isLight ? "border-black/30 hover:border-black" : "border-white/30 hover:border-white";
     const logoColor = isLight ? "text-black" : "text-white";
 
+    const navLinks = [
+        {
+            name: "Mission",
+            href: "/mission",
+            subLinks: [
+                { name: "Vision", href: "/mission" },
+                { name: "Roadmap", href: "/mission#roadmap" },
+            ],
+        },
+        { name: "Vehicle", href: "/#vehicle" },
+        { name: "Capabilities", href: "/#capabilities" },
+        { name: "Careers", href: "/careers" },
+    ];
+
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -65,16 +80,47 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-6 ml-8">
+                <div className="hidden md:flex items-center gap-8 ml-8">
                     {navLinks.map((link) => (
-                        <Link
+                        <div
                             key={link.name}
-                            href={link.href}
-                            className={`text-xs font-medium tracking-[0.3em] uppercase transition-all duration-300 relative group ${textColor} ${hoverColor}`}
+                            className="relative group"
+                            onMouseEnter={() => setHoveredLink(link.name)}
+                            onMouseLeave={() => setHoveredLink(null)}
                         >
-                            {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
-                        </Link>
+                            <Link
+                                href={link.href}
+                                className={`text-xs font-medium tracking-[0.3em] uppercase transition-all duration-300 relative block py-2 ${textColor} ${hoverColor}`}
+                            >
+                                {link.name}
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
+                            </Link>
+
+                            {/* Dropdown */}
+                            <AnimatePresence>
+                                {hoveredLink === link.name && link.subLinks && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10, height: 0 }}
+                                        animate={{ opacity: 1, y: 0, height: "auto" }}
+                                        exit={{ opacity: 0, y: 10, height: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="absolute top-full left-0 mt-0 w-48 overflow-hidden pt-2"
+                                    >
+                                        <div className="flex flex-col gap-2">
+                                            {link.subLinks.map((subLink) => (
+                                                <Link
+                                                    key={subLink.name}
+                                                    href={subLink.href}
+                                                    className="block text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 hover:text-white transition-all"
+                                                >
+                                                    {subLink.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     ))}
                     <a
                         href="mailto:launch@cosmicblue.com"
@@ -104,14 +150,29 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                     >
                         <div className="flex flex-col p-6 gap-4">
                             {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-lg font-medium tracking-[0.3em] uppercase text-gray-300 hover:text-white transition-all"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    {link.name}
-                                </Link>
+                                <div key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-lg font-medium tracking-[0.3em] uppercase text-gray-300 hover:text-white transition-all block"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                    {link.subLinks && (
+                                        <div className="pl-6 mt-2 space-y-2 border-l border-white/10 ml-2">
+                                            {link.subLinks.map((subLink) => (
+                                                <Link
+                                                    key={subLink.name}
+                                                    href={subLink.href}
+                                                    className="block text-sm font-medium tracking-[0.2em] uppercase text-gray-500 hover:text-white transition-all"
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                >
+                                                    {subLink.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             ))}
                             <a
                                 href="mailto:launch@cosmicblue.com"
