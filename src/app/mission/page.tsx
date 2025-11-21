@@ -16,7 +16,15 @@ export default function MissionPage() {
             <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-black z-0" />
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                    >
+                        <source src="/videos/88207-602915574.mp4" type="video/mp4" />
+                    </video>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
