@@ -1,15 +1,24 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
 
+const videos = [
+    "/videos/31377-386628887.mp4",
+    "/videos/88207-602915574.mp4"
+];
 
 export default function MissionPage() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+    const handleVideoEnd = () => {
+        setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+    };
 
     return (
         <main className="bg-black min-h-screen">
@@ -18,17 +27,29 @@ export default function MissionPage() {
             <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
                 {/* Background Video */}
                 <div className="absolute inset-0 z-0">
-                    <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="auto"
-                        className={`w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
-                        onLoadedData={() => setIsVideoLoaded(true)}
-                    >
-                        <source src="/videos/31377-386628887.mp4" type="video/mp4" />
-                    </video>
+                    <AnimatePresence mode="popLayout">
+                        <motion.div
+                            key={currentVideoIndex}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 1.5, ease: "easeInOut" }}
+                            className="absolute inset-0 w-full h-full"
+                        >
+                            <video
+                                autoPlay
+                                muted
+                                loop={false} // Don't loop individual videos
+                                playsInline
+                                preload="auto"
+                                className={`w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
+                                onLoadedData={() => setIsVideoLoaded(true)}
+                                onEnded={handleVideoEnd}
+                            >
+                                <source src={videos[currentVideoIndex]} type="video/mp4" />
+                            </video>
+                        </motion.div>
+                    </AnimatePresence>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
