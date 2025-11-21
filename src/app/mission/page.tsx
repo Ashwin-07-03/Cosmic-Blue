@@ -185,9 +185,6 @@ export default function MissionPage() {
                                             <h4 className="text-xl md:text-2xl font-bold text-white mb-1 drop-shadow-lg">
                                                 {item.title}
                                             </h4>
-                                            {item.subtitle && (
-                                                <p className="text-blue-200 text-sm mb-1 font-medium">{item.subtitle}</p>
-                                            )}
                                             <p className="text-white text-sm leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
                                                 {index % 2 !== 0 && (
                                                     <span className="md:ml-0 md:mr-auto block">{item.desc}</span>
