@@ -45,10 +45,11 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
 
-    const textColor = "text-white";
-    const hoverColor = "hover:text-gray-300";
-    const borderColor = "border-white/30 hover:border-white";
-    const logoColor = "text-white";
+    const isLight = theme === "light";
+    const textColor = isLight ? "text-black" : "text-white";
+    const hoverColor = isLight ? "hover:text-gray-600" : "hover:text-gray-300";
+    const borderColor = isLight ? "border-black/30 hover:border-black" : "border-white/30 hover:border-white";
+    const logoColor = isLight ? "text-black" : "text-white";
 
     return (
         <nav

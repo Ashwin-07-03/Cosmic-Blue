@@ -1,114 +1,76 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
 
-const stats = [
-    {
-        id: "reuses",
-        label: "Reuses",
-        value: "50+",
-    },
-    {
-        id: "leo",
-        label: "To LEO",
-        value: "6,000kg",
-    },
-    {
-        id: "cost",
-        label: "Cost Per kg",
-        value: "<$1,500",
-    },
+const videos = [
+    { src: "/videos/49981-459802291.mp4", startTime: 0, duration: 5000 },
+    { src: "/videos/140111-774507949.mp4", startTime: 0, duration: 5000 },
+    { src: "/videos/88207-602915574.mp4", startTime: 7, duration: 5000 },
+    { src: "/videos/31377-386628887.mp4", startTime: 0, duration: 6000 }
 ];
 
-const ScrambleText = ({ text, trigger }: { text: string; trigger: boolean }) => {
-    const [display, setDisplay] = useState("");
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
-
-    useEffect(() => {
-        if (!trigger) return;
-
-        let iteration = 0;
-        const interval = setInterval(() => {
-            setDisplay(
-                text
-                    .split("")
-                    .map((char, index) => {
-                        if (index < iteration) {
-                            return text[index];
-                        }
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    })
-                    .join("")
-            );
-
-            if (iteration >= text.length) {
-                clearInterval(interval);
-            }
-
-            iteration += 1 / 3;
-        }, 30);
-
-        return () => clearInterval(interval);
-    }, [text, trigger]);
-
-    return <span>{display}</span>;
-};
 
 export default function MissionPage() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+        }, videos[currentVideoIndex].duration);
+        return () => clearTimeout(timer);
+    }, [currentVideoIndex]);
 
     return (
         <main className="bg-black min-h-screen">
             <Navbar />
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-                {/* Background Image */}
+            <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
+                {/* Background Video Slideshow */}
                 <div className="absolute inset-0 z-0">
-                    <img
-                        src="/images/mission-hero.png"
-                        alt="Mission Control Spaceport"
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
+                    <AnimatePresence mode="popLayout">
+                        <motion.div
+                            key={currentVideoIndex}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 1.5, ease: "easeInOut" }}
+                            className="absolute inset-0 w-full h-full"
+                        >
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover"
+                                onLoadedMetadata={(e) => {
+                                    e.currentTarget.currentTime = videos[currentVideoIndex].startTime;
+                                }}
+                            >
+                                <source src={videos[currentVideoIndex].src} type="video/mp4" />
+                            </video>
+                        </motion.div>
+                    </AnimatePresence>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 pt-20">
+                <div className="container mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="max-w-5xl mx-auto text-center"
                     >
-                        <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 font-heading tracking-tight drop-shadow-2xl">
+                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
                             OUR MISSION
                         </h1>
-                        <p className="text-2xl md:text-3xl text-gray-200 leading-relaxed font-light max-w-3xl mx-auto mb-16 drop-shadow-lg">
-                            Making space accessible, affordable, and sustainable for everyone.
+                        <p className="text-xl md:text-2xl text-white font-bold leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
+                            Making space accessible, affordable, and sustainable for everyone to make life better on earth.
                         </p>
-
-                        {/* Integrated Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 border-t border-white/20 pt-12 backdrop-blur-sm bg-white/5 rounded-2xl p-8">
-                            {stats.map((stat, index) => (
-                                <motion.div
-                                    key={stat.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
-                                    className="text-center group"
-                                >
-                                    <div className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-2 font-body group-hover:text-cosmic-blue transition-colors duration-300">
-                                        <ScrambleText text={stat.value} trigger={true} />
-                                    </div>
-                                    <div className="text-sm uppercase tracking-[0.3em] text-gray-400 font-bold font-body group-hover:text-white transition-colors duration-300">
-                                        {stat.label}
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -132,14 +94,12 @@ export default function MissionPage() {
                                     we open the door to a new era of exploration, innovation, and discovery.
                                 </p>
                                 <p>
-                                    Our mission is to make space access as routine and affordable as commercial air travel.
-                                    Through innovative reusable rocket technology and efficient operations, we're bringing down
-                                    the barriers that have kept space exploration exclusive.
-                                </p>
-                                <p>
-                                    With our fully reusable launch system, we can achieve over 50 reuses per vehicle,
-                                    deliver 6,000kg to Low Earth Orbit, and maintain launch costs under $1,500 per kilogram—
-                                    revolutionizing the economics of space access.
+                                    At Cosmic Blue, we are pioneering a transformative vision for the future of space exploration.
+                                    Our main goal is to develop a fully reusable 2 stage medium lift launch vehicle technology
+                                    that not only significantly lowers the costs associated with satellite launches but also
+                                    accelerates the entire launch process. This innovation is crucial in a world where the demand
+                                    for satellite deployment is rapidly increasing. Each of our launch vehicles is meticulously
+                                    engineered to withstand over 50 flights with minimal maintenance required.
                                 </p>
                             </div>
                         </motion.div>
