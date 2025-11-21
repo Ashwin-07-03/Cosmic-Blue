@@ -24,20 +24,11 @@ export default function MissionPage() {
                         loop
                         playsInline
                         preload="auto"
-                        poster="/images/mission-hero.png"
                         className={`w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
                         onLoadedData={() => setIsVideoLoaded(true)}
                     >
                         <source src="/videos/31377-386628887.mp4" type="video/mp4" />
                     </video>
-                    {/* Poster Image (visible until video loads) */}
-                    <div className={`absolute inset-0 bg-black transition-opacity duration-1000 ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
-                        <img
-                            src="/images/mission-hero.png"
-                            alt="Mission Background"
-                            className="w-full h-full object-cover opacity-50"
-                        />
-                    </div>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
