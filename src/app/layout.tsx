@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Rajdhani, Outfit } from "next/font/google";
 import "./globals.css";
+import SecurityDeterrent from "@/components/SecurityDeterrent";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${rajdhani.variable} ${outfit.variable} bg-cosmic-black text-white antialiased`}>
+        <SecurityDeterrent />
         {children}
       </body>
     </html>
