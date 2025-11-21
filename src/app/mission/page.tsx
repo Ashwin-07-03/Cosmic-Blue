@@ -46,17 +46,16 @@ export default function MissionPage() {
             </section>
 
             {/* Mission Details - Space for Everyone */}
-            <section className="py-20 relative overflow-hidden">
-                {/* Calming Day Sky Background */}
+            <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-32">
+                {/* Realistic Calm Sky Background */}
                 <div className="absolute inset-0 z-0">
-                    {/* Sky gradient background */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-blue-400 via-blue-300 to-blue-200" />
-
-                    {/* Subtle light rays overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
-
-                    {/* Soft vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/10" />
+                    <img
+                        src="/images/realistic-sky.png"
+                        alt="Calm Blue Sky"
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* Subtle overlay for text readability */}
+                    <div className="absolute inset-0 bg-white/10" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
@@ -67,10 +66,10 @@ export default function MissionPage() {
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl font-bold text-gray-900 mb-8 font-body">
+                            <h2 className="text-5xl font-bold text-slate-900 mb-10 font-heading tracking-tight">
                                 Space for Everyone
                             </h2>
-                            <div className="space-y-6 text-gray-800 leading-relaxed">
+                            <div className="space-y-8 text-lg md:text-xl text-slate-800 font-medium leading-relaxed">
                                 <p>
                                     We believe that humanity's future lies among the stars. By reducing the cost of launch,
                                     we open the door to a new era of exploration, innovation, and discovery.
@@ -95,7 +94,7 @@ export default function MissionPage() {
                         >
                             <Link
                                 href="/"
-                                className="inline-block px-8 py-4 text-white text-sm font-bold tracking-[0.2em] uppercase border border-gray-800 bg-gray-900 hover:bg-gray-800 hover:border-gray-700 transition-all duration-300"
+                                className="inline-block px-8 py-4 text-white text-sm font-bold tracking-[0.2em] uppercase border border-white/30 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-cosmic-blue transition-all duration-300"
                             >
                                 ← Back to Home
                             </Link>
