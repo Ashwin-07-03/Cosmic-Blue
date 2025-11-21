@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
 
@@ -19,14 +19,30 @@ export default function MissionPage() {
     const [activePlayer, setActivePlayer] = useState(0); // 0 or 1 to track which video element is active
     const videoRefs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
 
+    // Update video sources when index changes
+    useEffect(() => {
+        const currentVideoElement = videoRefs[activePlayer].current;
+        const nextPlayer = activePlayer === 0 ? 1 : 0;
+        const nextVideoElement = videoRefs[nextPlayer].current;
+
+        if (currentVideoElement) {
+            // Set current video source and play
+            currentVideoElement.src = videos[currentVideoIndex];
+            currentVideoElement.load();
+            currentVideoElement.play().catch(() => { });
+        }
+
+        if (nextVideoElement) {
+            // Preload next video
+            const nextIndex = (currentVideoIndex + 1) % videos.length;
+            nextVideoElement.src = videos[nextIndex];
+            nextVideoElement.load();
+        }
+    }, [currentVideoIndex, activePlayer]);
+
     const handleVideoEnd = () => {
         const nextIndex = (currentVideoIndex + 1) % videos.length;
         const nextPlayer = activePlayer === 0 ? 1 : 0;
-
-        // Start the next video
-        if (videoRefs[nextPlayer].current) {
-            videoRefs[nextPlayer].current.play();
-        }
 
         // Swap active player and update index
         setActivePlayer(nextPlayer);
@@ -43,31 +59,25 @@ export default function MissionPage() {
                     {/* Video Player 1 */}
                     <video
                         ref={videoRefs[0]}
-                        autoPlay={activePlayer === 0}
                         muted
                         playsInline
                         preload="auto"
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1500 ease-in-out ${activePlayer === 0 ? "opacity-100 z-10" : "opacity-0 z-0"
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${activePlayer === 0 ? "opacity-100 z-10" : "opacity-0 z-0"
                             }`}
                         onLoadedData={() => setIsVideoLoaded(true)}
                         onEnded={handleVideoEnd}
-                    >
-                        <source src={videos[activePlayer === 0 ? currentVideoIndex : (currentVideoIndex + 1) % videos.length]} type="video/mp4" />
-                    </video>
+                    />
 
                     {/* Video Player 2 */}
                     <video
                         ref={videoRefs[1]}
-                        autoPlay={activePlayer === 1}
                         muted
                         playsInline
                         preload="auto"
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1500 ease-in-out ${activePlayer === 1 ? "opacity-100 z-10" : "opacity-0 z-0"
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${activePlayer === 1 ? "opacity-100 z-10" : "opacity-0 z-0"
                             }`}
                         onEnded={handleVideoEnd}
-                    >
-                        <source src={videos[activePlayer === 1 ? currentVideoIndex : (currentVideoIndex + 1) % videos.length]} type="video/mp4" />
-                    </video>
+                    />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
