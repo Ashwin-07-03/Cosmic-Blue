@@ -50,12 +50,12 @@ export default function MissionPage() {
                 {/* Realistic Calm Sky Background */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/calm-pink-sky.png"
-                        alt="Calm Pink Sky"
+                        src="/images/deep-blue-small-comets.png"
+                        alt="Deep Blue Sky with Comets"
                         className="absolute inset-0 w-full h-full object-cover"
                     />
                     {/* Subtle overlay for text readability */}
-                    <div className="absolute inset-0 bg-white/10" />
+                    <div className="absolute inset-0 bg-black/20" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
@@ -66,10 +66,10 @@ export default function MissionPage() {
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-5xl font-bold text-slate-900 mb-10 font-heading tracking-tight">
+                            <h2 className="text-5xl font-bold text-white mb-10 font-heading tracking-tight drop-shadow-lg">
                                 Space for Everyone
                             </h2>
-                            <div className="space-y-8 text-lg md:text-xl text-slate-800 font-medium leading-relaxed">
+                            <div className="space-y-8 text-lg md:text-xl text-gray-200 font-medium leading-relaxed drop-shadow-md">
                                 <p>
                                     We believe that humanity's future lies among the stars. By reducing the cost of launch,
                                     we open the door to a new era of exploration, innovation, and discovery.
@@ -78,26 +78,23 @@ export default function MissionPage() {
                                     At Cosmic Blue, we are pioneering a transformative vision for the future of space exploration.
                                     Our main goal is to develop a fully reusable 2 stage medium lift launch vehicle technology
                                     that not only significantly lowers the costs associated with satellite launches but also
-                                    accelerates the entire launch process. This innovation is crucial in a world where the demand
-                                    for satellite deployment is rapidly increasing. Each of our launch vehicles is meticulously
-                                    engineered to withstand over 50 flights with minimal maintenance required.
+                                    accelerates the entire launch process. This innovation is crucial in a world where the
+                                    demand for satellite deployment is rapidly increasing. Each of our launch vehicles is
+                                    meticulously engineered to withstand over 50 flights with minimal maintenance required.
                                 </p>
                             </div>
-                        </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            viewport={{ once: true }}
-                            className="mt-12"
-                        >
-                            <Link
-                                href="/"
-                                className="inline-block px-8 py-4 text-white text-sm font-bold tracking-[0.2em] uppercase border border-white/30 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-cosmic-blue transition-all duration-300"
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                viewport={{ once: true }}
+                                className="mt-12"
                             >
-                                ← Back to Home
-                            </Link>
+                                <Link href="/" className="inline-flex items-center px-8 py-4 text-sm font-bold text-white uppercase tracking-widest border border-white/30 rounded-full hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm bg-white/5">
+                                    <span className="mr-2">←</span> Back to Home
+                                </Link>
+                            </motion.div>
                         </motion.div>
                     </div>
                 </div>
