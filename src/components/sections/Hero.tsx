@@ -26,12 +26,12 @@ export default function Hero() {
                     loop
                     muted
                     playsInline preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover opacity-80"
+                    className="absolute inset-0 w-full h-full object-cover"
                 >
-                    <source src="/videos/hero-background.mp4" type="video/mp4" />
+                    <source src="/videos/74926-554074582_medium.mp4" type="video/mp4" />
                 </video>
                 {/* Gradient Overlay for better visibility + text readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/40" />
             </motion.div>
 
             {/* 3. Hero Content - Lower Third, Cinematic Fade */}
