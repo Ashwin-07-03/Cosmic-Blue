@@ -50,8 +50,8 @@ export default function MissionPage() {
                 {/* Realistic Calm Sky Background */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/realistic-sky.png"
-                        alt="Calm Blue Sky"
+                        src="/images/calm-pink-sky.png"
+                        alt="Calm Pink Sky"
                         className="absolute inset-0 w-full h-full object-cover"
                     />
                     {/* Subtle overlay for text readability */}
