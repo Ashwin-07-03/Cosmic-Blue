@@ -101,13 +101,13 @@ export default function Mission() {
                     viewport={{ once: true }}
                     className="absolute right-6 top-16 max-w-md"
                 >
-                    <h3 className="text-xl font-bold text-cosmic-blue mb-2 font-body uppercase tracking-wide" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                    <h3 className="text-xl font-bold text-yellow-400 mb-2 font-heading uppercase tracking-wide" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                         Our Mission
                     </h3>
-                    <h4 className="text-3xl font-bold text-white mb-4 font-body" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                    <h4 className="text-3xl font-bold text-blue-200 mb-4 font-heading" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                         Space for Everyone
                     </h4>
-                    <p className="text-sm text-white leading-relaxed mb-6" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
+                    <p className="text-sm text-gray-200 leading-relaxed mb-6" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
                         We believe that humanity's future lies among the stars. By reducing the cost of launch,
                         we open the door to a new era of exploration, innovation, and discovery.
                     </p>
