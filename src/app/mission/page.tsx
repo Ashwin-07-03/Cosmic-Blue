@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
@@ -15,9 +15,21 @@ export default function MissionPage() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const [activePlayer, setActivePlayer] = useState(0); // 0 or 1 to track which video element is active
+    const videoRefs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
 
     const handleVideoEnd = () => {
-        setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+        const nextIndex = (currentVideoIndex + 1) % videos.length;
+        const nextPlayer = activePlayer === 0 ? 1 : 0;
+
+        // Start the next video
+        if (videoRefs[nextPlayer].current) {
+            videoRefs[nextPlayer].current.play();
+        }
+
+        // Swap active player and update index
+        setActivePlayer(nextPlayer);
+        setCurrentVideoIndex(nextIndex);
     };
 
     return (
@@ -25,31 +37,36 @@ export default function MissionPage() {
             <Navbar />
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-end pb-32 justify-center overflow-hidden">
-                {/* Background Video */}
+                {/* Background Video - Dual Video System */}
                 <div className="absolute inset-0 z-0">
-                    <AnimatePresence mode="popLayout">
-                        <motion.div
-                            key={currentVideoIndex}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 1.5, ease: "easeInOut" }}
-                            className="absolute inset-0 w-full h-full"
-                        >
-                            <video
-                                autoPlay
-                                muted
-                                loop={false} // Don't loop individual videos
-                                playsInline
-                                preload="auto"
-                                className={`w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
-                                onLoadedData={() => setIsVideoLoaded(true)}
-                                onEnded={handleVideoEnd}
-                            >
-                                <source src={videos[currentVideoIndex]} type="video/mp4" />
-                            </video>
-                        </motion.div>
-                    </AnimatePresence>
+                    {/* Video Player 1 */}
+                    <video
+                        ref={videoRefs[0]}
+                        autoPlay={activePlayer === 0}
+                        muted
+                        playsInline
+                        preload="auto"
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1500 ease-in-out ${activePlayer === 0 ? "opacity-100 z-10" : "opacity-0 z-0"
+                            }`}
+                        onLoadedData={() => setIsVideoLoaded(true)}
+                        onEnded={handleVideoEnd}
+                    >
+                        <source src={videos[activePlayer === 0 ? currentVideoIndex : (currentVideoIndex + 1) % videos.length]} type="video/mp4" />
+                    </video>
+
+                    {/* Video Player 2 */}
+                    <video
+                        ref={videoRefs[1]}
+                        autoPlay={activePlayer === 1}
+                        muted
+                        playsInline
+                        preload="auto"
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1500 ease-in-out ${activePlayer === 1 ? "opacity-100 z-10" : "opacity-0 z-0"
+                            }`}
+                        onEnded={handleVideoEnd}
+                    >
+                        <source src={videos[activePlayer === 1 ? currentVideoIndex : (currentVideoIndex + 1) % videos.length]} type="video/mp4" />
+                    </video>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
                 </div>
 
