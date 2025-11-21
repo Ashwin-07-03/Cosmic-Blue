@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const features = [
     {
@@ -70,6 +71,21 @@ export default function VehicleOverview() {
                                 </motion.div>
                             ))}
                         </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 1.0 }}
+                            viewport={{ once: true }}
+                            className="mt-12"
+                        >
+                            <Link
+                                href="/vehicle"
+                                className="inline-block px-8 py-3 border border-white/30 text-white font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                Know More
+                            </Link>
+                        </motion.div>
                     </div>
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
