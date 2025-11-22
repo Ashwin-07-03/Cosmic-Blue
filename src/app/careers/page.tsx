@@ -15,17 +15,21 @@ export default function CareersPage() {
 
             {/* Hero Section */}
             <section className="pt-32 pb-12 px-6">
-                <div className="container mx-auto max-w-4xl text-center">
-                    <p className="text-blue-400 font-medium tracking-[0.2em] uppercase text-sm mb-4 drop-shadow-[0_0_5px_rgba(96,165,250,0.5)]">
+                <div className="container mx-auto max-w-5xl text-center">
+                    <h1 className="text-5xl md:text-6xl font-heading font-bold text-black mb-6 uppercase tracking-tight leading-tight">
                         Building the Future for Ourselves and Those Who Follow
-                    </p>
-                    <h1 className="text-4xl md:text-5xl font-heading font-bold text-black mb-6 uppercase tracking-wide">
-                        Join Our Mission
                     </h1>
-                    <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-                        Help us revolutionize space access. We&apos;re building the future of reusable launch vehicles
-                        and looking for talented individuals to join our team.
-                    </p>
+                    <h2 className="text-blue-400 font-medium tracking-[0.2em] uppercase text-sm mb-8 drop-shadow-[0_0_5px_rgba(96,165,250,0.5)]">
+                        Join Our Mission
+                    </h2>
+                    <div className="text-base text-gray-700 leading-relaxed max-w-3xl mx-auto space-y-4">
+                        <p>
+                            The primary objective of Cosmic Blue is to enhance life and satisfy the curiosity inherent in humanity. The founders believe that we're not just a space company—we're so much more. Our goal as a company is to inspire people and spark their curiosity about science and space. We want to show them that you don't need to be a scientist to explore science. You don't need a science degree to satisfy your curiosity and work on innovative ideas. As a company, we ensure that schools and colleges don't kill a child's curiosity.
+                        </p>
+                        <p>
+                            If you are an individual who is committed to creating something remarkable that will shape the future of both space and this nation, then you should consider pursuing a career with Cosmic Blue.
+                        </p>
+                    </div>
                 </div>
             </section>
 
