@@ -17,16 +17,12 @@ export default function Footer() {
                     </div>
 
                     <div className="flex gap-8">
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider">
-                            Privacy Policy
-                        </a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider">
-                            Terms of Service
-                        </a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider">
-                            Twitter
-                        </a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider">
+                        <a
+                            href="https://www.linkedin.com/company/cosmicblue/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider"
+                        >
                             LinkedIn
                         </a>
                     </div>
