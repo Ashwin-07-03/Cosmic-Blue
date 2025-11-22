@@ -54,8 +54,6 @@ export default function CareersPage() {
                         alt="Mountain Peak with Hiker"
                         className="w-full h-full object-cover"
                     />
-                    {/* Gradient Overlay for text readability */}
-                    <div className="absolute inset-0 bg-black/40" />
                 </div>
 
                 {/* Apply Content */}
