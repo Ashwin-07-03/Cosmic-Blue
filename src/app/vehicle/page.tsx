@@ -11,8 +11,16 @@ export default function VehiclePage() {
             <Navbar />
 
             {/* Hero / Intro for Vehicle Page */}
-            <section className="relative pt-32 pb-16 px-6">
-                <div className="container mx-auto text-center">
+            <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src="/images/deep_space_background.png"
+                        alt="Deep Space Background"
+                        className="w-full h-full object-cover opacity-60"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black" />
+                </div>
+                <div className="container mx-auto text-center relative z-10">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
