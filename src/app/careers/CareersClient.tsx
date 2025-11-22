@@ -1,18 +1,9 @@
 "use client";
 
-import { useRef, useEffect } from 'react';
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
 
 export default function CareersClient() {
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.playbackRate = 0.6;
-        }
-    }, []);
-
     return (
         <main className="min-h-screen">
             <Navbar theme="dark" />
@@ -22,7 +13,6 @@ export default function CareersClient() {
                 {/* Video Background */}
                 <div className="absolute inset-0 z-0">
                     <video
-                        ref={videoRef}
                         autoPlay
                         loop
                         muted
