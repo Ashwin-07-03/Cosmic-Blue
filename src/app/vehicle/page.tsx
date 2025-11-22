@@ -54,9 +54,7 @@ export default function VehiclePage() {
                 isReversed={true}
                 specs={[
                     { label: "Thrust", value: "1,900 kN" },
-                    { label: "Height", value: "50 m" },
-                    { label: "Diameter", value: "9 m" },
-                    { label: "Payload to LEO", value: "150t" }
+                    { label: "Payload to LEO", value: "6ton" }
                 ]}
                 imageSrc="/images/stage2-engine.jpg" // Placeholder
             />

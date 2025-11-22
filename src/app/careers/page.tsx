@@ -38,7 +38,7 @@ export default function CareersPage() {
                         </h2>
                         <div className="text-base text-white leading-relaxed max-w-3xl mx-auto space-y-4 font-bold">
                             <p>
-                                The primary objective of Cosmic Blue is to enhance life and satisfy the curiosity inherent in humanity. The founders believe that we're not just a space company—we're so much more. Our goal as a company is to inspire people and spark their curiosity about science and space. We want to show them that you don't need to be a scientist to explore science. You don't need a science degree to satisfy your curiosity and work on innovative ideas. As a company, we ensure that schools and colleges don't kill a child's curiosity.
+                                The primary objective of Cosmic Blue is to enhance life and satisfy the curiosity inherent in humanity. We believe that we're not just a space company-we're so much more. Our goal as a company is to inspire people and spark their curiosity about science and space. We want to show them that you don't need to be a scientist to explore science. You don't need a science degree to satisfy your curiosity and work on innovative ideas. As a company, we ensure that schools and colleges don't kill a child's curiosity.
                             </p>
                             <p>
                                 If you are an individual who is committed to creating something remarkable that will shape the future of both space and this nation, then you should consider pursuing a career with Cosmic Blue.
