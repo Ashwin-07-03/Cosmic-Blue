@@ -16,6 +16,9 @@ export default function CareersPage() {
             {/* Hero Section */}
             <section className="pt-32 pb-12 px-6">
                 <div className="container mx-auto max-w-4xl text-center">
+                    <p className="text-blue-400 font-medium tracking-[0.2em] uppercase text-sm mb-4 drop-shadow-[0_0_5px_rgba(96,165,250,0.5)]">
+                        Building the Future for Ourselves and Those Who Follow
+                    </p>
                     <h1 className="text-4xl md:text-5xl font-heading font-bold text-black mb-6 uppercase tracking-wide">
                         Join Our Mission
                     </h1>
