@@ -50,24 +50,24 @@ export default function CareersPage() {
                 {/* Image Background */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/apply-bg.png"
+                        src="/images/apply-bg-wide.png"
                         alt="Mountain Peak with Hiker"
                         className="w-full h-full object-cover"
                     />
                     {/* Gradient Overlay for text readability */}
-                    <div className="absolute inset-0 bg-black/20" />
+                    <div className="absolute inset-0 bg-black/40" />
                 </div>
 
                 {/* Apply Content */}
                 <div className="relative z-10 container mx-auto max-w-3xl text-center px-6 py-20">
-                    <h2 className="text-white font-bold tracking-[0.3em] mb-12 uppercase text-3xl">
+                    <h2 className="text-white font-bold tracking-[0.3em] mb-12 uppercase text-3xl drop-shadow-lg">
                         Apply
                     </h2>
 
                     <div className="flex flex-col items-center">
                         <a
                             href="mailto:ashwin.vk71@gmail.com?subject=Application for [Role Name] - [Your Name]&body=Dear Hiring Team,%0D%0A%0D%0AI am writing to apply for the [Role Name] position.%0D%0A%0D%0AHere are my details:%0D%0A- Role: [Role Name]%0D%0A- Why I fit: [Your explanation]%0D%0A- Contribution: [Your contribution]%0D%0A- Current Salary: [Amount]%0D%0A- Expected Salary: [Amount]%0D%0A%0D%0AI have attached my CV for your review.%0D%0A%0D%0ABest regards,%0D%0A[Your Name]"
-                            className="group relative inline-flex items-center justify-center w-24 h-24 mb-8 rounded-full border-2 border-white hover:bg-white transition-all duration-500"
+                            className="group relative inline-flex items-center justify-center w-24 h-24 mb-8 rounded-full border-2 border-white hover:bg-white transition-all duration-500 shadow-lg"
                             aria-label="Send Application Email"
                         >
                             <svg
@@ -91,11 +91,11 @@ export default function CareersPage() {
                             <p>Click the icon to apply</p>
                         </div>
 
-                        <div className="max-w-md mx-auto text-left bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10">
-                            <p className="text-white text-sm uppercase tracking-widest mb-6 text-center border-b border-white/30 pb-4 font-bold">
+                        <div className="max-w-md mx-auto text-left">
+                            <p className="text-white text-sm uppercase tracking-widest mb-6 text-center border-b border-white/30 pb-4 font-bold drop-shadow-md">
                                 Please Include
                             </p>
-                            <ul className="space-y-4 text-white font-bold">
+                            <ul className="space-y-4 text-white font-bold drop-shadow-md">
                                 <li className="flex items-baseline gap-4">
                                     <span className="text-xs text-white/70">01</span>
                                     <span>The role you are applying for</span>
