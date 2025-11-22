@@ -23,8 +23,6 @@ export default function CareersPage() {
                 >
                     <source src="/videos/310307_medium.mp4" type="video/mp4" />
                 </video>
-                {/* Overlay for readability */}
-                <div className="absolute inset-0 bg-black/60" />
             </div>
 
             {/* Content */}
