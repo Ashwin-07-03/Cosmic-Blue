@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CareersPage() {
     return (
         <main className="min-h-screen relative">
-            <Navbar theme="light" />
+            <Navbar theme="dark" />
 
             {/* Video Background */}
             <div className="fixed inset-0 z-0">
