@@ -30,13 +30,13 @@ export default function CareersPage() {
                 {/* Hero Section */}
                 <section className="pt-40 pb-12 px-6">
                     <div className="container mx-auto max-w-5xl text-center text-white">
-                        <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 uppercase tracking-tight leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 uppercase tracking-tight leading-tight">
                             Building the Future for Ourselves and Those Who Follow
                         </h1>
-                        <h2 className="text-blue-400 font-medium tracking-[0.2em] uppercase text-sm mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h2 className="text-blue-400 font-bold tracking-[0.2em] uppercase text-sm mb-8">
                             Join Our Mission
                         </h2>
-                        <div className="text-base text-white leading-relaxed max-w-3xl mx-auto space-y-4 font-light drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                        <div className="text-base text-white leading-relaxed max-w-3xl mx-auto space-y-4 font-bold">
                             <p>
                                 The primary objective of Cosmic Blue is to enhance life and satisfy the curiosity inherent in humanity. The founders believe that we're not just a space company—we're so much more. Our goal as a company is to inspire people and spark their curiosity about science and space. We want to show them that you don't need to be a scientist to explore science. You don't need a science degree to satisfy your curiosity and work on innovative ideas. As a company, we ensure that schools and colleges don't kill a child's curiosity.
                             </p>
@@ -50,7 +50,7 @@ export default function CareersPage() {
                 {/* Application Instructions */}
                 <section className="pb-24 px-6">
                     <div className="container mx-auto max-w-3xl text-center">
-                        <h2 className="text-white font-medium tracking-[0.3em] mb-12 uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <h2 className="text-white font-bold tracking-[0.3em] mb-12 uppercase">
                             Apply
                         </h2>
 
@@ -77,15 +77,15 @@ export default function CareersPage() {
                                 </svg>
                             </a>
 
-                            <div className="space-y-2 text-white text-sm tracking-widest uppercase mb-12 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                            <div className="space-y-2 text-white text-sm tracking-widest uppercase mb-12 font-bold">
                                 <p>Click the icon to apply</p>
                             </div>
 
                             <div className="max-w-md mx-auto text-left">
-                                <p className="text-white text-sm uppercase tracking-widest mb-6 text-center border-b border-white/30 pb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                                <p className="text-white text-sm uppercase tracking-widest mb-6 text-center border-b border-white/30 pb-4 font-bold">
                                     Please Include
                                 </p>
-                                <ul className="space-y-4 text-white font-light drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                                <ul className="space-y-4 text-white font-bold">
                                     <li className="flex items-baseline gap-4">
                                         <span className="text-xs text-white/50">01</span>
                                         <span>The role you are applying for</span>
