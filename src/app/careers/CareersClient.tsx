@@ -275,7 +275,6 @@ export default function CareersClient() {
                                                 'Thrust Chamber Designer - On-Site - Bengaluru',
                                                 'Project Management Director - On-Site - Bengaluru',
                                                 'Test Stand Operations Lead - On-Site - Bengaluru',
-                                                'Other',
                                             ].map((role) => (
                                                 <div
                                                     key={role}
@@ -291,21 +290,25 @@ export default function CareersClient() {
                                         </div>
                                     )}
                                 </div>
+                            </div>
 
-                                {/* Show text input if "Other" is selected */}
-                                {formData.role === 'Other' && (
-                                    <input
-                                        type="text"
-                                        name="customRole"
-                                        placeholder="Please specify your role"
-                                        className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 mt-4 focus:outline-none focus:border-white transition-colors placeholder-white/30"
-                                        onChange={(e) => {
-                                            const customValue = e.target.value;
-                                            setFormData(prev => ({ ...prev, role: customValue || 'Other' }));
-                                        }}
-                                        value={formData.role === 'Other' ? '' : formData.role}
-                                    />
-                                )}
+                            {/* Other Role - Separate Field */}
+                            <div>
+                                <label htmlFor="otherRole" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                    Other
+                                </label>
+                                <input
+                                    type="text"
+                                    id="otherRole"
+                                    name="otherRole"
+                                    placeholder="Specify if your role is not listed above"
+                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
+                                    onChange={(e) => {
+                                        if (e.target.value) {
+                                            setFormData({ ...formData, role: e.target.value });
+                                        }
+                                    }}
+                                />
                             </div>
                         </div>
 
