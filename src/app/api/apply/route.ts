@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
         // Send email using Resend
         const { data, error: resendError } = await resend.emails.send({
             from: 'Cosmic Blue Careers <onboarding@resend.dev>', // Use your verified domain in production
-            to: ['ashwin.vk71@gmail.com'],
+            to: ['ashwin.vk71@gmail.com', 'gdhanush151@gmail.com', 'srohith5200@gmail.com'],
             subject: `Job Application - ${validatedData.role} - ${validatedData.fullName}`,
             html: emailHtml,
             attachments: [
