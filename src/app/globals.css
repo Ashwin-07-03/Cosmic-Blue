@@ -36,7 +36,8 @@ html {
   --color-cosmic-black: var(--color-cosmic-black);
   --color-cosmic-black-light: var(--color-cosmic-black-light);
 
-  --font-heading: var(--font-heading), sans-serif;
+  --font-heading: var(--font-heading), serif;
+  --font-navbar: var(--font-navbar), sans-serif;
   --font-sans: var(--font-body), sans-serif;
   --font-body: var(--font-body), sans-serif;
 }
