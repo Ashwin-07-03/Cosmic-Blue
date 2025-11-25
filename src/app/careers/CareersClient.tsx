@@ -180,7 +180,7 @@ export default function CareersClient() {
                                     onChange={handleInputChange}
                                     required
                                     className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
-                                    placeholder="John Doe"
+                                    placeholder="Enter name"
                                 />
                             </div>
 
@@ -196,7 +196,7 @@ export default function CareersClient() {
                                     onChange={handleInputChange}
                                     required
                                     className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
-                                    placeholder="john@example.com"
+                                    placeholder="Dhanush@example.com"
                                 />
                             </div>
                         </div>
