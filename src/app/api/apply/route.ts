@@ -20,16 +20,21 @@ const applicationSchema = z.object({
     resumeFileName: z.string().min(1, 'Resume file name is required'),
 });
 
+type ApplicationData = z.infer<typeof applicationSchema>;
+
 export async function POST(request: NextRequest) {
     try {
         // Parse request body
         const body = await request.json();
 
         // Validate form data
-        const validatedData = applicationSchema.parse(body);
+        const validatedData: ApplicationData = applicationSchema.parse(body);
 
         // Convert base64 resume to buffer for attachment
-        const resumeBuffer = Buffer.from(validatedData.resume.split(',')[1], 'base64');
+        const base64Data = validatedData.resume.includes(',')
+            ? validatedData.resume.split(',')[1]
+            : validatedData.resume;
+        const resumeBuffer = Buffer.from(base64Data, 'base64');
 
         // Prepare email content
         const emailHtml = `
@@ -58,7 +63,7 @@ export async function POST(request: NextRequest) {
     `;
 
         // Send email using Resend
-        const data = await resend.emails.send({
+        const { data, error: resendError } = await resend.emails.send({
             from: 'Cosmic Blue Careers <onboarding@resend.dev>', // Use your verified domain in production
             to: ['ashwin.vk71@gmail.com'],
             subject: `Job Application - ${validatedData.role} - ${validatedData.fullName}`,
@@ -71,8 +76,16 @@ export async function POST(request: NextRequest) {
             ],
         });
 
+        if (resendError) {
+            console.error('Resend error:', resendError);
+            return NextResponse.json(
+                { error: 'Failed to send email. Please try again.' },
+                { status: 500 }
+            );
+        }
+
         return NextResponse.json(
-            { message: 'Application submitted successfully', id: data.id },
+            { message: 'Application submitted successfully', id: data?.id },
             { status: 200 }
         );
     } catch (error) {
