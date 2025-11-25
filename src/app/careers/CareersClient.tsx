@@ -25,7 +25,7 @@ export default function CareersClient() {
 
                 {/* Hero Content */}
                 <div className="relative z-10 container mx-auto max-w-5xl text-center text-white px-6 pt-20">
-                    <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 uppercase tracking-tight leading-tight">
+                    <h1 className="text-3xl md:text-4xl font-heading font-bold mb-6 uppercase tracking-tight leading-tight">
                         Building the Future for Ourselves and Those Who Follow
                     </h1>
                     <h2 className="text-blue-400 font-bold tracking-[0.2em] uppercase text-sm mb-8">
