@@ -12,13 +12,18 @@ export default function VehiclePage() {
 
             {/* Hero / Intro for Vehicle Page */}
             <section className="relative pt-32 pb-16 px-6 overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img
-                        src="/images/cosmic_one_dark_bg.png"
-                        alt="Earth from Space"
-                        className="w-full h-full object-cover opacity-50"
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-black to-[#0f172a]">
+                    {/* Technical Grid Pattern */}
+                    <div
+                        className="absolute inset-0 opacity-10"
+                        style={{
+                            backgroundImage: `
+                                linear-gradient(to right, #ffffff 1px, transparent 1px),
+                                linear-gradient(to bottom, #ffffff 1px, transparent 1px)
+                            `,
+                            backgroundSize: '40px 40px',
+                        }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
                 </div>
                 <div className="container mx-auto text-center relative z-10">
                     <motion.h1
