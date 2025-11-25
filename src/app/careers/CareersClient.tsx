@@ -169,7 +169,7 @@ export default function CareersClient() {
                         {/* Row 1: Name & Email */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                             <div>
-                                <label htmlFor="fullName" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                <label htmlFor="fullName" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Full Name
                                 </label>
                                 <input
@@ -185,7 +185,7 @@ export default function CareersClient() {
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                <label htmlFor="email" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Email
                                 </label>
                                 <input
@@ -204,7 +204,7 @@ export default function CareersClient() {
                         {/* Row 2: Phone & Role */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                             <div>
-                                <label htmlFor="phone" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                <label htmlFor="phone" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Phone Number
                                 </label>
                                 <input
@@ -220,7 +220,7 @@ export default function CareersClient() {
                             </div>
 
                             <div>
-                                <label htmlFor="role" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                <label htmlFor="role" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Role Applying For
                                 </label>
                                 <input
@@ -238,7 +238,7 @@ export default function CareersClient() {
 
                         {/* Row 3: LinkedIn/X Profile */}
                         <div>
-                            <label htmlFor="linkedinX" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                            <label htmlFor="linkedinX" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                 LinkedIn/X Profile
                             </label>
                             <input
@@ -254,7 +254,7 @@ export default function CareersClient() {
 
                         {/* Row 4: Why Good Fit */}
                         <div>
-                            <label htmlFor="whyGoodFit" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                            <label htmlFor="whyGoodFit" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                 Why You're a Good Fit
                             </label>
                             <textarea
@@ -271,7 +271,7 @@ export default function CareersClient() {
 
                         {/* Row 5: Contribution */}
                         <div>
-                            <label htmlFor="contribution" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                            <label htmlFor="contribution" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                 Your Potential Contribution
                             </label>
                             <textarea
@@ -289,7 +289,7 @@ export default function CareersClient() {
                         {/* Row 6: Salary */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                             <div>
-                                <label htmlFor="currentSalary" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                <label htmlFor="currentSalary" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Current Salary
                                 </label>
                                 <input
@@ -304,7 +304,7 @@ export default function CareersClient() {
                             </div>
 
                             <div>
-                                <label htmlFor="expectedSalary" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                <label htmlFor="expectedSalary" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Expected Salary
                                 </label>
                                 <input
@@ -321,7 +321,7 @@ export default function CareersClient() {
 
                         {/* Row 7: Resume Upload */}
                         <div>
-                            <label htmlFor="resume" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                            <label htmlFor="resume" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                 Resume/CV
                             </label>
                             <div className="relative">
