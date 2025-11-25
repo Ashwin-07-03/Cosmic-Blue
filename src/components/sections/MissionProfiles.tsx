@@ -60,7 +60,7 @@ export default function MissionProfiles() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-heading font-bold text-white uppercase tracking-wide"
+                        className="text-4xl md:text-5xl font-bold text-white uppercase tracking-wide"
                     >
                         Mission Profiles
                     </motion.h3>

@@ -58,7 +58,7 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-4xl font-heading font-bold text-white mb-6 uppercase tracking-wide"
+                            className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-wide"
                         >
                             Cosmic One
                         </motion.h3>
