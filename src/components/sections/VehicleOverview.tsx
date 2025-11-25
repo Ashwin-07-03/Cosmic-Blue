@@ -24,7 +24,7 @@ const features = [
 
 export default function VehicleOverview() {
     return (
-        <section id="vehicle" className="py-[120px] relative overflow-hidden bg-gradient-to-b from-[#0a0e1a] to-black">
+        <section id="vehicle" className="py-16 relative overflow-hidden bg-gradient-to-b from-[#0f172a] to-black">
             {/* Technical Background */}
             <div className="absolute inset-0 z-0 opacity-10">
                 {/* Grid Pattern */}
@@ -41,7 +41,7 @@ export default function VehicleOverview() {
                 />
             </div>
 
-            <div className="container mx-auto px-12 relative z-10">
+            <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <motion.h2
@@ -49,7 +49,7 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                             viewport={{ once: true }}
-                            className="text-accent font-normal tracking-[0.15em] mb-4 uppercase text-[14px]"
+                            className="text-blue-400 font-medium tracking-[0.2em] mb-2 uppercase text-sm drop-shadow-[0_0_5px_rgba(96,165,250,0.5)]"
                         >
                             The Vehicle
                         </motion.h2>
@@ -58,7 +58,7 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="text-5xl md:text-[64px] font-light text-white mb-8 uppercase tracking-normal leading-[1.1]"
+                            className="text-3xl md:text-4xl font-heading font-bold text-white mb-6 uppercase tracking-wide"
                         >
                             Cosmic One
                         </motion.h3>
@@ -67,12 +67,12 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                             viewport={{ once: true }}
-                            className="text-[17px] text-white/70 leading-[1.7] mb-16 max-w-[550px] font-light"
+                            className="text-base text-gray-300 leading-relaxed mb-8 max-w-lg"
                         >
                             A fully reusable two-stage launch vehicle designed for reliability and rapid turnaround.
                             Cosmic One is built to make space access routine.
                         </motion.p>
-                        <div className="space-y-[56px]">
+                        <div className="space-y-6">
                             {features.map((feature, index) => (
                                 <motion.div
                                     key={index}
@@ -80,10 +80,10 @@ export default function VehicleOverview() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
                                     viewport={{ once: true }}
-                                    className="pb-0 border-b-0"
+                                    className="pb-4 border-b border-white/10 last:border-0"
                                 >
-                                    <h4 className="text-[28px] font-normal text-white mb-3">{feature.title}</h4>
-                                    <p className="text-[16px] text-white/65 leading-[1.6] font-light max-w-[500px]">{feature.description}</p>
+                                    <h4 className="text-lg font-bold text-white mb-1">{feature.title}</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">{feature.description}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -93,11 +93,11 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 1.0 }}
                             viewport={{ once: true }}
-                            className="mt-16"
+                            className="mt-8"
                         >
                             <Link
                                 href="/vehicle"
-                                className="inline-block px-8 py-3 border border-white/30 text-white text-[12px] font-normal tracking-[0.12em] uppercase hover:bg-white hover:text-black transition-all duration-300"
+                                className="inline-block px-6 py-2 border border-white/30 text-white text-sm font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-300"
                             >
                                 Know More
                             </Link>
@@ -109,10 +109,10 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
-                            className="relative flex justify-center items-center h-[600px] w-full"
+                            className="relative flex justify-center items-center h-[500px] w-full"
                         >
                             {/* Technical SVG Diagram */}
-                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.1)]">
+                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
                                 <defs>
                                     <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                         <stop offset="0%" stopColor="white" stopOpacity="0.1" />
@@ -126,7 +126,7 @@ export default function VehicleOverview() {
                                 <line x1="100" y1="20" x2="100" y2="580" stroke="white" strokeOpacity="0.1" strokeDasharray="4 4" />
 
                                 {/* Rocket Outline */}
-                                <g stroke="url(#line-gradient)" strokeWidth="1.5" fill="none">
+                                <g stroke="url(#line-gradient)" strokeWidth="2" fill="none">
                                     {/* Fairing / Stage 2 */}
                                     <path d="M100 50 L130 120 L130 250 L70 250 L70 120 Z" />
                                     <line x1="70" y1="250" x2="130" y2="250" />
@@ -147,7 +147,7 @@ export default function VehicleOverview() {
                                 </g>
 
                                 {/* Labels */}
-                                <g fill="white" fontSize="11" fontFamily="monospace" letterSpacing="0.1em" opacity="0.8">
+                                <g fill="white" fontSize="10" fontFamily="monospace" opacity="0.8">
                                     <text x="150" y="180">STAGE 2</text>
                                     <line x1="135" y1="180" x2="145" y2="180" stroke="white" strokeWidth="1" />
 
@@ -161,7 +161,7 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1 }}
                             transition={{ duration: 0.6, delay: 0.8 }}
                             viewport={{ once: true }}
-                            className="text-[12px] text-white/40 italic mt-4 text-center font-light"
+                            className="text-xs text-gray-500 italic mt-4 text-center"
                         >
                             Note: This model is for reference only. The final design is coming soon.
                         </motion.p>

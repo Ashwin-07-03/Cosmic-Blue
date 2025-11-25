@@ -68,18 +68,19 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-                } bg-black/80 backdrop-blur-md border-b border-white/5 py-6`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+                } ${isScrolled ? "py-4" : "py-6"
+                }`}
         >
-            <div className="container mx-auto px-12 flex items-center justify-between">
+            <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <span className={`text-2xl font-navbar font-normal tracking-[0.15em] transition-colors whitespace-nowrap ${logoColor}`}>
+                    <span className={`text-3xl font-navbar font-bold tracking-widest transition-colors whitespace-nowrap ${logoColor}`}>
                         COSMIC BLUE
                     </span>
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-12 ml-12">
+                <div className="hidden md:flex items-center gap-8 ml-8">
                     {navLinks.map((link) => (
                         <div
                             key={link.name}
@@ -89,10 +90,10 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                         >
                             <Link
                                 href={link.href}
-                                className={`text-[13px] font-light tracking-[0.1em] uppercase transition-all duration-300 relative block py-2 ${textColor} hover:text-accent`}
+                                className={`text-xs font-medium tracking-[0.3em] uppercase transition-all duration-300 relative block py-2 ${textColor} ${hoverColor}`}
                             >
                                 {link.name}
-                                <span className="absolute bottom-0 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
                             </Link>
 
                             {/* Dropdown */}
@@ -105,12 +106,12 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                                         transition={{ duration: 0.2 }}
                                         className="absolute top-full left-0 mt-0 w-48 overflow-hidden pt-2"
                                     >
-                                        <div className="flex flex-col gap-2 bg-black/90 backdrop-blur-md p-4 border border-white/10 rounded-sm">
+                                        <div className="flex flex-col gap-2">
                                             {link.subLinks.map((subLink) => (
                                                 <Link
                                                     key={subLink.name}
                                                     href={subLink.href}
-                                                    className="block text-[11px] font-normal tracking-[0.1em] uppercase text-gray-400 hover:text-white transition-all"
+                                                    className="block text-[10px] font-bold tracking-[0.2em] uppercase text-white hover:text-gray-300 transition-all"
                                                 >
                                                     {subLink.name}
                                                 </Link>
@@ -121,6 +122,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                             </AnimatePresence>
                         </div>
                     ))}
+                    {/* Launch button removed */}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -139,25 +141,25 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-black/95 border-b border-white/5 overflow-hidden backdrop-blur-xl"
+                        className="md:hidden bg-cosmic-black border-b border-white/10 overflow-hidden"
                     >
-                        <div className="flex flex-col p-8 gap-6">
+                        <div className="flex flex-col p-6 gap-4">
                             {navLinks.map((link) => (
                                 <div key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-lg font-light tracking-[0.15em] uppercase text-gray-300 hover:text-white transition-all block"
+                                        className="text-lg font-medium tracking-[0.3em] uppercase text-gray-300 hover:text-white transition-all block"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {link.name}
                                     </Link>
                                     {link.subLinks && (
-                                        <div className="pl-6 mt-3 space-y-3 border-l border-white/10 ml-2">
+                                        <div className="pl-6 mt-2 space-y-2 border-l border-white/10 ml-2">
                                             {link.subLinks.map((subLink) => (
                                                 <Link
                                                     key={subLink.name}
                                                     href={subLink.href}
-                                                    className="block text-sm font-light tracking-[0.1em] uppercase text-gray-500 hover:text-white transition-all"
+                                                    className="block text-sm font-medium tracking-[0.2em] uppercase text-gray-500 hover:text-white transition-all"
                                                     onClick={() => setIsMobileMenuOpen(false)}
                                                 >
                                                     {subLink.name}
