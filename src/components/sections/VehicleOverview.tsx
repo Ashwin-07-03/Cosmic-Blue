@@ -25,20 +25,14 @@ const features = [
 export default function VehicleOverview() {
     return (
         <section id="vehicle" className="py-16 relative overflow-hidden bg-gradient-to-b from-[#0f172a] to-black">
-            {/* Technical Background */}
-            <div className="absolute inset-0 z-0 opacity-10">
-                {/* Grid Pattern */}
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(to right, #ffffff 1px, transparent 1px),
-                            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
-                        `,
-                        backgroundSize: '40px 40px',
-                        opacity: 0.1
-                    }}
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/images/cosmic_one_bg.png"
+                    alt="Earth from Space"
+                    className="w-full h-full object-cover opacity-60"
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
