@@ -2,7 +2,7 @@
 
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function CareersClient() {
@@ -22,6 +22,19 @@ export default function CareersClient() {
         file: null,
         base64: '',
     });
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({
@@ -223,46 +236,60 @@ export default function CareersClient() {
                                 <label htmlFor="role" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Role Applying For
                                 </label>
-                                <div className="relative">
-                                    <select
-                                        id="role"
-                                        name="role"
-                                        value={formData.role}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 pr-8 focus:outline-none focus:border-white transition-colors appearance-none cursor-pointer"
-                                        style={{
-                                            backgroundImage: 'none',
-                                        }}
+                                <div className="relative" ref={dropdownRef}>
+                                    {/* Custom Dropdown Trigger */}
+                                    <div
+                                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                        className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 pr-8 cursor-pointer flex items-center justify-between focus:outline-none focus:border-white transition-colors"
                                     >
-                                        <option value="" className="bg-black text-white/50 py-3">Select a role</option>
-                                        <option value="Valves Design Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Valves Design Engineers - On-Site - Bengaluru</option>
-                                        <option value="Hardware Testing Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Hardware Testing Engineers - On-Site - Bengaluru</option>
-                                        <option value="Thermal Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Thermal Engineers - On-Site - Bengaluru</option>
-                                        <option value="Structural Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Structural Engineers - On-Site - Bengaluru</option>
-                                        <option value="Cryogenics Engineer - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Cryogenics Engineer - On-Site - Bengaluru</option>
-                                        <option value="Chief Propulsion Engineer - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Chief Propulsion Engineer - On-Site - Bengaluru</option>
-                                        <option value="Lead Turbopump Specialist - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Lead Turbopump Specialist - On-Site - Bengaluru</option>
-                                        <option value="Materials Scientist - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Materials Scientist - On-Site - Bengaluru</option>
-                                        <option value="Combustion Dynamics Expert - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Combustion Dynamics Expert - On-Site - Bengaluru</option>
-                                        <option value="Systems Integration Lead - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Systems Integration Lead - On-Site - Bengaluru</option>
-                                        <option value="Injector Design Principal - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Injector Design Principal - On-Site - Bengaluru</option>
-                                        <option value="Software Developer for Simulations - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Software Developer for Simulations - On-Site - Bengaluru</option>
-                                        <option value="Supply Chain Strategist - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Supply Chain Strategist - On-Site - Bengaluru</option>
-                                        <option value="Thrust Chamber Designer - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Thrust Chamber Designer - On-Site - Bengaluru</option>
-                                        <option value="Project Management Director - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Project Management Director - On-Site - Bengaluru</option>
-                                        <option value="Test Stand Operations Lead - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Test Stand Operations Lead - On-Site - Bengaluru</option>
-                                        <option value="Other" className="bg-black text-white py-3 hover:bg-white/10">Other (Please specify)</option>
-                                    </select>
-                                    {/* Custom dropdown arrow */}
-                                    <svg
-                                        className="absolute right-0 top-0 w-4 h-4 text-white/50 pointer-events-none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                                    </svg>
+                                        <span className={formData.role ? 'text-white' : 'text-white/30'}>
+                                            {formData.role || 'Select a role'}
+                                        </span>
+                                        <svg
+                                            className={`w-4 h-4 text-white/50 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+
+                                    {/* Custom Dropdown Menu */}
+                                    {isDropdownOpen && (
+                                        <div className="absolute z-50 w-full mt-2 bg-black border border-white/10 max-h-64 overflow-y-auto">
+                                            {[
+                                                'Valves Design Engineers - On-Site - Bengaluru',
+                                                'Hardware Testing Engineers - On-Site - Bengaluru',
+                                                'Thermal Engineers - On-Site - Bengaluru',
+                                                'Structural Engineers - On-Site - Bengaluru',
+                                                'Cryogenics Engineer - On-Site - Bengaluru',
+                                                'Chief Propulsion Engineer - On-Site - Bengaluru',
+                                                'Lead Turbopump Specialist - On-Site - Bengaluru',
+                                                'Materials Scientist - On-Site - Bengaluru',
+                                                'Combustion Dynamics Expert - On-Site - Bengaluru',
+                                                'Systems Integration Lead - On-Site - Bengaluru',
+                                                'Injector Design Principal - On-Site - Bengaluru',
+                                                'Software Developer for Simulations - On-Site - Bengaluru',
+                                                'Supply Chain Strategist - On-Site - Bengaluru',
+                                                'Thrust Chamber Designer - On-Site - Bengaluru',
+                                                'Project Management Director - On-Site - Bengaluru',
+                                                'Test Stand Operations Lead - On-Site - Bengaluru',
+                                                'Other',
+                                            ].map((role) => (
+                                                <div
+                                                    key={role}
+                                                    onClick={() => {
+                                                        setFormData({ ...formData, role });
+                                                        setIsDropdownOpen(false);
+                                                    }}
+                                                    className="px-4 py-3 text-white text-[14px] font-light hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-b-0"
+                                                >
+                                                    {role}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Show text input if "Other" is selected */}
