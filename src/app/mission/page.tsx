@@ -162,11 +162,11 @@ export default function MissionPage() {
 
                         <div className="space-y-10 relative">
                             {[
-                                { phase: "Phase 1", title: "Engine Design & Analysis", desc: "Initial conceptualization and computational fluid dynamics simulations." },
-                                { phase: "Phase 2", title: "Engine Component Development", desc: "Prototyping and testing of turbopumps, injectors, and combustion chambers." },
-                                { phase: "Phase 3", title: "Integrated Subsystem Testing", desc: "Full system integration tests to verify fluid dynamics and control systems." },
-                                { phase: "Phase 4", title: "Single Engine Qualification", desc: "Rigorous hot-fire testing to certify engine performance and reliability." },
-                                { phase: "Phase 5", title: "Cluster Integration & Flight Qualification", desc: "Multi-engine integration and final flight readiness reviews." }
+                                { phase: "Phase 1", title: "Engine Design & Analysis" },
+                                { phase: "Phase 2", title: "Engine Component Development" },
+                                { phase: "Phase 3", title: "Integrated Subsystem Testing" },
+                                { phase: "Phase 4", title: "Single Engine Qualification" },
+                                { phase: "Phase 5", title: "Cluster Integration & Flight Qualification" }
                             ].map((item, index) => (
                                 <motion.div
                                     key={index}
@@ -185,14 +185,7 @@ export default function MissionPage() {
                                             <h4 className="text-xl md:text-2xl font-bold text-white mb-1 drop-shadow-lg">
                                                 {item.title}
                                             </h4>
-                                            <p className="text-white text-sm leading-relaxed max-w-sm ml-0 md:ml-auto md:mr-0">
-                                                {index % 2 !== 0 && (
-                                                    <span className="md:ml-0 md:mr-auto block">{item.desc}</span>
-                                                )}
-                                                {index % 2 === 0 && (
-                                                    <span className="block">{item.desc}</span>
-                                                )}
-                                            </p>
+
                                         </div>
                                     </div>
 
