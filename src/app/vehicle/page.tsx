@@ -14,9 +14,9 @@ export default function VehiclePage() {
             <section className="relative pt-32 pb-16 px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/cosmic_one_bg.png"
+                        src="/images/cosmic_one_dark_bg.png"
                         alt="Earth from Space"
-                        className="w-full h-full object-cover opacity-60"
+                        className="w-full h-full object-cover opacity-50"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
                 </div>
