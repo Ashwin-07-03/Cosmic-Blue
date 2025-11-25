@@ -74,7 +74,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <span className={`text-3xl font-heading font-bold tracking-widest transition-colors whitespace-nowrap ${logoColor}`}>
+                    <span className={`text-3xl font-navbar font-bold tracking-widest transition-colors whitespace-nowrap ${logoColor}`}>
                         COSMIC BLUE
                     </span>
                 </Link>
