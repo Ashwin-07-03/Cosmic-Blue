@@ -34,7 +34,7 @@ export default function StageInfo({
     const isStage2 = subtitle.toLowerCase().includes("stage 2");
 
     return (
-        <section className="py-16 relative overflow-hidden bg-gradient-to-b from-[#0f172a] to-black">
+        <section className="py-16 relative overflow-hidden bg-gradient-to-b from-[#0a0e1a] to-black">
             {/* Technical Background */}
             <div className="absolute inset-0 z-0 opacity-10">
                 <div
