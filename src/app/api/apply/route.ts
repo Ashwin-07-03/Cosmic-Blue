@@ -78,11 +78,17 @@ export async function POST(request: NextRequest) {
 
         if (resendError) {
             console.error('Resend error:', resendError);
+            console.error('Full error details:', JSON.stringify(resendError, null, 2));
             return NextResponse.json(
-                { error: 'Failed to send email. Please try again.' },
+                {
+                    error: 'Failed to send email. Please try again.',
+                    details: process.env.NODE_ENV === 'development' ? resendError : undefined
+                },
                 { status: 500 }
             );
         }
+
+        console.log('Email sent successfully:', data?.id);
 
         return NextResponse.json(
             { message: 'Application submitted successfully', id: data?.id },
