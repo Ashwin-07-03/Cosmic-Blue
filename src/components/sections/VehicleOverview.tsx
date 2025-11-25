@@ -25,14 +25,20 @@ const features = [
 export default function VehicleOverview() {
     return (
         <section id="vehicle" className="py-16 relative overflow-hidden bg-gradient-to-b from-[#0f172a] to-black">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="/images/cosmic_one_bg.png"
-                    alt="Earth from Space"
-                    className="w-full h-full object-cover opacity-60"
+            {/* Technical Background */}
+            <div className="absolute inset-0 z-0 opacity-10">
+                {/* Grid Pattern */}
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(to right, #ffffff 1px, transparent 1px),
+                            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
+                        `,
+                        backgroundSize: '40px 40px',
+                        opacity: 0.1
+                    }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -103,10 +109,20 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
-                            className="relative flex justify-center items-center h-[500px] w-full"
+                            className="relative flex justify-center items-center h-[500px] w-full rounded-2xl overflow-hidden border border-white/10"
                         >
+                            {/* Background for Rocket Diagram */}
+                            <div className="absolute inset-0 z-0">
+                                <img
+                                    src="/images/cosmic_one_bg.png"
+                                    alt="Earth Background"
+                                    className="w-full h-full object-cover opacity-50"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/80" />
+                            </div>
+
                             {/* Technical SVG Diagram */}
-                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
+                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)] relative z-10">
                                 <defs>
                                     <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                         <stop offset="0%" stopColor="white" stopOpacity="0.1" />
