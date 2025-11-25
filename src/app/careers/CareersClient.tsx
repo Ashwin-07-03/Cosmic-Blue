@@ -145,30 +145,32 @@ export default function CareersClient() {
                 </div>
             </section>
 
-            {/* Section 2: Apply with Form */}
-            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden py-20">
-                {/* Image Background */}
+            {/* Section 2: Apply with Minimalist Form */}
+            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden py-32">
+                {/* Image Background with Heavy Dark Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img
                         src="/images/apply-bg-wide.png"
                         alt="Mountain Peak with Hiker"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover opacity-20"
                     />
-                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute inset-0 bg-black/90" />
                 </div>
 
-                {/* Apply Content */}
-                <div className="relative z-10 container mx-auto max-w-4xl px-6">
-                    <h2 className="text-white font-bold tracking-[0.3em] mb-12 uppercase text-3xl drop-shadow-lg text-center">
+                {/* Apply Content - Minimalist Design */}
+                <div className="relative z-10 container mx-auto max-w-3xl px-8">
+                    {/* Title */}
+                    <h2 className="text-white font-light text-[14px] tracking-[0.3em] mb-20 uppercase text-center">
                         Apply
                     </h2>
 
-                    <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md rounded-lg p-8 border border-white/20">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Full Name */}
+                    {/* Minimalist Form */}
+                    <form onSubmit={handleSubmit} className="space-y-16">
+                        {/* Row 1: Name & Email */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                             <div>
-                                <label htmlFor="fullName" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    Full Name *
+                                <label htmlFor="fullName" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                    Full Name
                                 </label>
                                 <input
                                     type="text"
@@ -177,15 +179,14 @@ export default function CareersClient() {
                                     value={formData.fullName}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
                                     placeholder="John Doe"
                                 />
                             </div>
 
-                            {/* Email */}
                             <div>
-                                <label htmlFor="email" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    Email *
+                                <label htmlFor="email" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                    Email
                                 </label>
                                 <input
                                     type="email"
@@ -194,15 +195,17 @@ export default function CareersClient() {
                                     value={formData.email}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
                                     placeholder="john@example.com"
                                 />
                             </div>
+                        </div>
 
-                            {/* Phone */}
+                        {/* Row 2: Phone & Role */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                             <div>
-                                <label htmlFor="phone" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    Phone Number *
+                                <label htmlFor="phone" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                    Phone Number
                                 </label>
                                 <input
                                     type="tel"
@@ -211,15 +214,14 @@ export default function CareersClient() {
                                     value={formData.phone}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
                                     placeholder="+1 234 567 8900"
                                 />
                             </div>
 
-                            {/* Role */}
                             <div>
-                                <label htmlFor="role" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    Role Applying For *
+                                <label htmlFor="role" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                    Role Applying For
                                 </label>
                                 <input
                                     type="text"
@@ -228,64 +230,66 @@ export default function CareersClient() {
                                     value={formData.role}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
                                     placeholder="Software Engineer"
                                 />
                             </div>
+                        </div>
 
-                            {/* LinkedIn/X */}
-                            <div className="md:col-span-2">
-                                <label htmlFor="linkedinX" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    LinkedIn/X Profile
-                                </label>
-                                <input
-                                    type="url"
-                                    id="linkedinX"
-                                    name="linkedinX"
-                                    value={formData.linkedinX}
-                                    onChange={handleInputChange}
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
-                                    placeholder="https://linkedin.com/in/johndoe"
-                                />
-                            </div>
+                        {/* Row 3: LinkedIn/X Profile */}
+                        <div>
+                            <label htmlFor="linkedinX" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                LinkedIn/X Profile
+                            </label>
+                            <input
+                                type="url"
+                                id="linkedinX"
+                                name="linkedinX"
+                                value={formData.linkedinX}
+                                onChange={handleInputChange}
+                                className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
+                                placeholder="https://linkedin.com/in/johndoe"
+                            />
+                        </div>
 
-                            {/* Why Good Fit */}
-                            <div className="md:col-span-2">
-                                <label htmlFor="whyGoodFit" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    Why You're a Good Fit * (Min 50 characters)
-                                </label>
-                                <textarea
-                                    id="whyGoodFit"
-                                    name="whyGoodFit"
-                                    value={formData.whyGoodFit}
-                                    onChange={handleInputChange}
-                                    required
-                                    rows={4}
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors resize-none"
-                                    placeholder="Explain your relevant skills and experience..."
-                                />
-                            </div>
+                        {/* Row 4: Why Good Fit */}
+                        <div>
+                            <label htmlFor="whyGoodFit" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                Why You're a Good Fit
+                            </label>
+                            <textarea
+                                id="whyGoodFit"
+                                name="whyGoodFit"
+                                value={formData.whyGoodFit}
+                                onChange={handleInputChange}
+                                required
+                                rows={4}
+                                className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors resize-none placeholder-white/30"
+                                placeholder="Explain your relevant skills and experience..."
+                            />
+                        </div>
 
-                            {/* Contribution */}
-                            <div className="md:col-span-2">
-                                <label htmlFor="contribution" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    Your Potential Contribution * (Min 50 characters)
-                                </label>
-                                <textarea
-                                    id="contribution"
-                                    name="contribution"
-                                    value={formData.contribution}
-                                    onChange={handleInputChange}
-                                    required
-                                    rows={4}
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors resize-none"
-                                    placeholder="Describe how you can contribute to Cosmic Blue..."
-                                />
-                            </div>
+                        {/* Row 5: Contribution */}
+                        <div>
+                            <label htmlFor="contribution" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                Your Potential Contribution
+                            </label>
+                            <textarea
+                                id="contribution"
+                                name="contribution"
+                                value={formData.contribution}
+                                onChange={handleInputChange}
+                                required
+                                rows={4}
+                                className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors resize-none placeholder-white/30"
+                                placeholder="Describe how you can contribute to Cosmic Blue..."
+                            />
+                        </div>
 
-                            {/* Current Salary */}
+                        {/* Row 6: Salary */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                             <div>
-                                <label htmlFor="currentSalary" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                <label htmlFor="currentSalary" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Current Salary
                                 </label>
                                 <input
@@ -294,14 +298,13 @@ export default function CareersClient() {
                                     name="currentSalary"
                                     value={formData.currentSalary}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
                                     placeholder="$80,000"
                                 />
                             </div>
 
-                            {/* Expected Salary */}
                             <div>
-                                <label htmlFor="expectedSalary" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                <label htmlFor="expectedSalary" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Expected Salary
                                 </label>
                                 <input
@@ -310,38 +313,56 @@ export default function CareersClient() {
                                     name="expectedSalary"
                                     value={formData.expectedSalary}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors placeholder-white/30"
                                     placeholder="$100,000"
                                 />
                             </div>
+                        </div>
 
-                            {/* Resume Upload */}
-                            <div className="md:col-span-2">
-                                <label htmlFor="resume" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                                    Resume/CV * (PDF or DOCX, Max 2MB)
-                                </label>
+                        {/* Row 7: Resume Upload */}
+                        <div>
+                            <label htmlFor="resume" className="block text-white/50 text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
+                                Resume/CV
+                            </label>
+                            <div className="relative">
                                 <input
                                     type="file"
                                     id="resume"
                                     accept=".pdf,.doc,.docx"
                                     onChange={handleFileChange}
                                     required
-                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                                 />
-                                {resume.file && (
-                                    <p className="text-white/70 text-sm mt-2">
-                                        Selected: {resume.file.name}
-                                    </p>
-                                )}
+                                <div className="border-b border-white/20 pb-3 flex items-center justify-between">
+                                    <span className="text-white/30 text-[14px] font-light">
+                                        {resume.file ? resume.file.name : 'Choose file (PDF or DOCX, Max 2MB)'}
+                                    </span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="1"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="text-white/50"
+                                    >
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="17 8 12 3 7 8" />
+                                        <line x1="12" y1="3" x2="12" y2="15" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
 
                         {/* Submit Button */}
-                        <div className="mt-8">
+                        <div className="pt-12">
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full px-8 py-4 bg-white text-black font-bold tracking-[0.2em] uppercase hover:bg-blue-400 hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full py-4 bg-transparent text-white text-[11px] font-light tracking-[0.3em] uppercase border-b border-white hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-30 disabled:cursor-not-allowed"
                             >
                                 {isSubmitting ? 'Submitting...' : 'Submit Application'}
                             </button>
