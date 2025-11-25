@@ -1,45 +1,51 @@
 @import "tailwindcss";
 
 :root {
+  /* Color System */
   --background: #000000;
   --foreground: #FFFFFF;
 
-  /* Electric Blue Colors */
-  --color-cosmic-blue: #4FC3F7;
-  --color-cosmic-blue-light: #81D4FA;
-  --color-cosmic-blue-dark: #0288D1;
-  --color-electric-blue: #4FC3F7;
+  --color-primary: #000000;
+  --color-secondary: #0a0e1a;
+  --color-accent: #60A5FA;
 
-  /* Dark Black Colors */
-  --color-cosmic-black: #000000;
-  --color-cosmic-black-light: #111111;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.75);
+  --color-text-tertiary: rgba(255, 255, 255, 0.5);
 
-  /* Grays */
-  --color-gray-50: #111111;
-  --color-gray-100: #222222;
-  --color-gray-200: #333333;
-  --color-gray-900: #FFFFFF;
-}
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-default: rgba(255, 255, 255, 0.2);
+  --color-border-hover: rgba(255, 255, 255, 1);
 
-html {
-  scroll-behavior: smooth;
+  --color-overlay: rgba(0, 0, 0, 0.4);
+
+  /* Spacing System */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
+  --spacing-4xl: 120px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-cosmic-blue: var(--color-cosmic-blue);
-  --color-cosmic-blue-light: var(--color-cosmic-blue-light);
-  --color-cosmic-blue-dark: var(--color-cosmic-blue-dark);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
 
-  --color-cosmic-black: var(--color-cosmic-black);
-  --color-cosmic-black-light: var(--color-cosmic-black-light);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-tertiary: var(--color-text-tertiary);
 
-  --font-heading: var(--font-heading), serif;
-  --font-navbar: var(--font-navbar), sans-serif;
-  --font-sans: var(--font-body), sans-serif;
-  --font-body: var(--font-body), sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  --font-navbar: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
 }
 
 body {

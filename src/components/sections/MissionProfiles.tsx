@@ -35,144 +35,57 @@ const profiles = [
 
 export default function MissionProfiles() {
     return (
-        <section id="capabilities" className="py-20 bg-black relative overflow-hidden min-h-[600px] flex flex-col justify-center">
+        <section id="capabilities" className="py-[120px] bg-black relative overflow-hidden min-h-[600px] flex flex-col justify-center">
             {/* Background Image - Earthrise Animation */}
             <motion.div
-                initial={{ y: 100, opacity: 0, scale: 1.1 }}
-                whileInView={{ y: 0, opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 1.1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 2.5, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-10%" }}
+                viewport={{ once: true }}
                 className="absolute inset-0 z-0"
             >
                 <img
                     src="/images/earth-horizon-clean.png"
                     alt="Earth Horizon"
-                    className="w-full h-full object-cover opacity-100"
+                    className="w-full h-full object-cover opacity-60"
                 />
-                {/* Minimal overlay for text readability at edges only */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-black/60" />
             </motion.div>
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center mb-12">
-                    {/* Removed "Capabilities" text */}
+
+            <div className="container mx-auto px-12 relative z-10">
+                <div className="text-center mb-24">
                     <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-heading font-bold text-white uppercase tracking-wide"
+                        className="text-4xl md:text-[56px] font-light text-white uppercase tracking-[0.08em]"
                     >
                         Mission Profiles
                     </motion.h3>
                 </div>
 
-                {/* Trajectory Container */}
-                <div className="relative w-full max-w-6xl mx-auto h-[600px] hidden md:block">
-                    {/* SVG Trajectory Line */}
-                    <svg className="absolute inset-0 w-full h-full overflow-visible">
-                        <defs>
-                            <linearGradient id="trajectoryGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="#333" />
-                                <stop offset="50%" stopColor="#4FC3F7" />
-                                <stop offset="100%" stopColor="#fff" />
-                            </linearGradient>
-                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                                <feGaussianBlur stdDeviation="4" result="blur" />
-                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                            </filter>
-                        </defs>
-
-                        {/* The Curve Path */}
-                        <motion.path
-                            d="M0,550 C200,550 400,300 1000,50"
-                            fill="none"
-                            stroke="url(#trajectoryGradient)"
-                            strokeWidth="4"
-                            strokeLinecap="round"
-                            filter="url(#glow)"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            transition={{ duration: 2, ease: "easeInOut" }}
-                            viewport={{ once: true }}
-                        />
-                    </svg>
-
-                    {/* Data Points */}
+                {/* Cards Container */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-[1400px] mx-auto">
                     {profiles.map((profile, index) => (
                         <motion.div
                             key={profile.id}
-                            className="absolute"
-                            style={{ left: `${profile.x}%`, top: `${profile.y}%` }}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 1 + index * 0.3 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.2 }}
                             viewport={{ once: true }}
+                            className="flex flex-col items-center text-center group"
                         >
-                            {/* Node Circle on the line */}
-                            <div className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-black border-2 border-cosmic-blue shadow-[0_0_15px_rgba(79,195,247,0.8)] z-20" />
-
-                            {/* Connector Line & Content Container */}
-                            <div className={`absolute flex items-center gap-4 ${index === 1 ? "flex-row-reverse -translate-x-full -translate-y-full pb-8 pr-8" : "pb-8 pl-8"}`}>
-
-                                {/* Diagonal Connector Line */}
-                                <div className={`absolute w-16 h-[1px] bg-gradient-to-r from-cosmic-blue/50 to-transparent
-                                    ${index === 1 ? "bottom-4 right-0 rotate-45 origin-bottom-right" : "bottom-4 left-0 -rotate-45 origin-bottom-left"}`}
-                                />
-
-                                {/* Text Content */}
-                                <div className={`min-w-[280px] ${index === 1 ? "text-right" : "text-left"}`}>
-                                    <div className={`flex items-baseline gap-3 mb-2 ${index === 1 ? "justify-end" : "justify-start"}`}>
-                                        <h4 className="text-5xl font-bold text-white">{profile.capacity}</h4>
-                                        <span className="text-lg text-cosmic-blue font-bold tracking-widest">{profile.title}</span>
-                                    </div>
-                                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-2 font-medium">{profile.subtitle}</p>
-
-                                    {/* Description with Blinking Vertical Line */}
-                                    <div className={`flex gap-4 ${index === 1 ? "flex-row-reverse" : "flex-row"}`}>
-                                        <motion.div
-                                            className="w-1 bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-                                            animate={{ opacity: [0.2, 1, 0.2] }}
-                                            transition={{
-                                                duration: 1,
-                                                repeat: Infinity,
-                                                delay: index * 1,
-                                                repeatDelay: 2, // (3 items - 1) * duration
-                                                ease: "easeInOut"
-                                            }}
-                                        />
-                                        <p className="text-sm text-gray-300 leading-relaxed">
-                                            {profile.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Mobile View (Vertical Timeline) */}
-                <div className="md:hidden space-y-12 mt-12 relative">
-                    {/* Vertical Line */}
-                    <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-800 via-cosmic-blue to-white" />
-
-                    {profiles.map((profile, index) => (
-                        <motion.div
-                            key={profile.id}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                            viewport={{ once: true }}
-                            className="pl-12 relative"
-                        >
-                            {/* Node Dot */}
-                            <div className="absolute left-[11px] top-2 w-4 h-4 rounded-full bg-black border-2 border-cosmic-blue" />
-
-                            <h4 className="text-4xl font-bold text-white mb-1">{profile.capacity}</h4>
-                            <div className="flex items-center gap-3 mb-3">
-                                <span className="text-cosmic-blue font-bold tracking-widest">{profile.title}</span>
-                                <span className="text-gray-500 text-xs uppercase tracking-wider">| {profile.subtitle}</span>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
+                            <h4 className="text-[72px] font-light text-white mb-2 leading-none">
+                                {profile.capacity}
+                            </h4>
+                            <span className="text-[16px] text-accent font-medium tracking-[0.12em] mb-6 uppercase">
+                                {profile.title}
+                            </span>
+                            <p className="text-[12px] text-white/50 tracking-[0.1em] mb-5 uppercase">
+                                {profile.subtitle}
+                            </p>
+                            <p className="text-[16px] text-white/70 leading-[1.6] font-light max-w-[350px]">
                                 {profile.description}
                             </p>
                         </motion.div>

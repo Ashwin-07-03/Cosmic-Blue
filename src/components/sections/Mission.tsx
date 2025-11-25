@@ -68,7 +68,7 @@ export default function Mission() {
     }, []);
 
     return (
-        <section id="mission" className="py-40 bg-black relative overflow-hidden min-h-[800px]" ref={ref}>
+        <section id="mission" className="py-[120px] bg-black relative overflow-hidden min-h-[800px]" ref={ref}>
             {/* Video Background - Dual videos for seamless loop */}
             <div className="absolute inset-0 z-0">
                 {/* Video 1 */}
@@ -77,49 +77,49 @@ export default function Mission() {
                     autoPlay
                     muted
                     playsInline
+                    loop
                     preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    onEnded={(e) => {
-                        // Restart immediately when ended
-                        const video = e.currentTarget;
-                        video.currentTime = 0;
-                        video.play();
-                    }}
+                    className="absolute inset-0 w-full h-full object-cover opacity-60"
                 >
                     <source src="/videos/189455-885804454_medium.mp4" type="video/mp4" />
                 </video>
-                {/* Light gradient overlay only */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 h-full pt-16">
-                {/* Mission Text - Positioned Absolute Right */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="absolute right-6 top-16 max-w-md"
-                >
-                    <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2 font-heading uppercase tracking-[0.2em]" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
-                        Our Mission
-                    </h3>
-                    <h4 className="text-3xl md:text-4xl font-bold text-white mb-6 font-heading uppercase tracking-wide" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
-                        Space for Everyone
-                    </h4>
-                    <p className="text-base text-gray-300 leading-relaxed mb-8 max-w-lg" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
-                        We believe that humanity's future lies among the stars. By reducing the cost of launch,
-                        we open the door to a new era of exploration, innovation, and discovery.
-                    </p>
-
-                    {/* Know More Button */}
-                    <a
-                        href="/mission"
-                        className="inline-block px-6 py-3 text-white text-xs font-bold tracking-[0.2em] uppercase border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-cosmic-blue transition-all duration-300"
+            <div className="container mx-auto px-12 relative z-10 h-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
+                    {/* Mission Text - Left Column */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        viewport={{ once: true }}
+                        className="max-w-[600px]"
                     >
-                        Know More →
-                    </a>
-                </motion.div>
+                        <h3 className="text-[14px] font-normal text-accent mb-6 uppercase tracking-[0.15em]">
+                            Our Mission
+                        </h3>
+                        <h4 className="text-5xl md:text-[72px] font-light text-white mb-10 uppercase tracking-wide leading-[1.1]">
+                            Space for Everyone
+                        </h4>
+                        <p className="text-[18px] text-white/75 leading-[1.7] mb-12 font-light">
+                            We believe that humanity&apos;s future lies among the stars. By reducing the cost of launch,
+                            we open the door to a new era of exploration, innovation, and discovery.
+                        </p>
+
+                        {/* Know More Button */}
+                        <a
+                            href="/mission"
+                            className="inline-block px-9 py-3.5 text-white text-[12px] font-normal tracking-[0.12em] uppercase border border-white/30 hover:border-white hover:bg-white/5 transition-all duration-300"
+                        >
+                            Know More →
+                        </a>
+                    </motion.div>
+
+                    {/* Right Column - Empty for now, allowing video to show through or for future content */}
+                    <div className="hidden md:block"></div>
+                </div>
             </div>
         </section >
     );
