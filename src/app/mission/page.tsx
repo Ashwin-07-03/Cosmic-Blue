@@ -35,7 +35,7 @@ export default function MissionPage() {
                         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
                         className="max-w-5xl mx-auto text-center"
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-heading tracking-tight drop-shadow-2xl">
+                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
                             OUR VISION
                         </h1>
                         <p className="text-lg md:text-xl text-white font-bold leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
@@ -119,7 +119,7 @@ export default function MissionPage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 font-heading tracking-tight drop-shadow-lg">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight drop-shadow-lg">
                             Cosmic Blue Product Roadmap
                         </h2>
                         <h3 className="text-lg md:text-xl text-blue-400 font-bold tracking-[0.2em] uppercase drop-shadow-md">
