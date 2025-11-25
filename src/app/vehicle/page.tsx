@@ -14,11 +14,11 @@ export default function VehiclePage() {
             <section className="relative pt-32 pb-16 px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/deep_space_background.png"
-                        alt="Deep Space Background"
+                        src="/images/cosmic_one_bg.png"
+                        alt="Earth from Space"
                         className="w-full h-full object-cover opacity-60"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
                 </div>
                 <div className="container mx-auto text-center relative z-10">
                     <motion.h1

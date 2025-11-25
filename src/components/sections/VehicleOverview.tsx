@@ -109,20 +109,10 @@ export default function VehicleOverview() {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
-                            className="relative flex justify-center items-center h-[500px] w-full rounded-2xl overflow-hidden border border-white/10"
+                            className="relative flex justify-center items-center h-[500px] w-full"
                         >
-                            {/* Background for Rocket Diagram */}
-                            <div className="absolute inset-0 z-0">
-                                <img
-                                    src="/images/cosmic_one_bg.png"
-                                    alt="Earth Background"
-                                    className="w-full h-full object-cover opacity-50"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/80" />
-                            </div>
-
                             {/* Technical SVG Diagram */}
-                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)] relative z-10">
+                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
                                 <defs>
                                     <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                         <stop offset="0%" stopColor="white" stopOpacity="0.1" />
