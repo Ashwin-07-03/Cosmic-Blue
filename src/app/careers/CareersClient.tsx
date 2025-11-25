@@ -243,7 +243,7 @@ export default function CareersClient() {
                                         className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 pr-8 cursor-pointer flex items-center justify-between focus:outline-none focus:border-white transition-colors"
                                     >
                                         <span className={formData.role ? 'text-white' : 'text-white/30'}>
-                                            {formData.role || 'Select a role'}
+                                            {formData.role ? formData.role.split(' - On-Site')[0] : 'Select a role'}
                                         </span>
                                         <svg
                                             className={`w-4 h-4 text-white/50 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
@@ -257,7 +257,7 @@ export default function CareersClient() {
 
                                     {/* Custom Dropdown Menu */}
                                     {isDropdownOpen && (
-                                        <div className="absolute z-50 w-full mt-2 bg-black border border-white/10 max-h-64 overflow-y-auto">
+                                        <div className="absolute z-50 w-full mt-2 bg-white border border-white/20 max-h-64 overflow-y-auto shadow-lg">
                                             {[
                                                 'Valves Design Engineers - On-Site - Bengaluru',
                                                 'Hardware Testing Engineers - On-Site - Bengaluru',
@@ -283,7 +283,7 @@ export default function CareersClient() {
                                                         setFormData({ ...formData, role });
                                                         setIsDropdownOpen(false);
                                                     }}
-                                                    className="px-4 py-3 text-white text-[14px] font-light hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-b-0"
+                                                    className="px-4 py-3 text-black text-[14px] font-light hover:bg-black/5 cursor-pointer transition-colors border-b border-black/5 last:border-b-0"
                                                 >
                                                     {role}
                                                 </div>
@@ -299,7 +299,11 @@ export default function CareersClient() {
                                         name="customRole"
                                         placeholder="Please specify your role"
                                         className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 mt-4 focus:outline-none focus:border-white transition-colors placeholder-white/30"
-                                        onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                                        onChange={(e) => {
+                                            const customValue = e.target.value;
+                                            setFormData(prev => ({ ...prev, role: customValue || 'Other' }));
+                                        }}
+                                        value={formData.role === 'Other' ? '' : formData.role}
                                     />
                                 )}
                             </div>
