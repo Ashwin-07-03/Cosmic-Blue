@@ -223,33 +223,47 @@ export default function CareersClient() {
                                 <label htmlFor="role" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
                                     Role Applying For
                                 </label>
-                                <select
-                                    id="role"
-                                    name="role"
-                                    value={formData.role}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 focus:outline-none focus:border-white transition-colors appearance-none cursor-pointer"
-                                >
-                                    <option value="" className="bg-black text-white">Select a role</option>
-                                    <option value="Valves Design Engineers - On-Site - Bengaluru" className="bg-black text-white">Valves Design Engineers - On-Site - Bengaluru</option>
-                                    <option value="Hardware Testing Engineers - On-Site - Bengaluru" className="bg-black text-white">Hardware Testing Engineers - On-Site - Bengaluru</option>
-                                    <option value="Thermal Engineers - On-Site - Bengaluru" className="bg-black text-white">Thermal Engineers - On-Site - Bengaluru</option>
-                                    <option value="Structural Engineers - On-Site - Bengaluru" className="bg-black text-white">Structural Engineers - On-Site - Bengaluru</option>
-                                    <option value="Cryogenics Engineer - On-Site - Bengaluru" className="bg-black text-white">Cryogenics Engineer - On-Site - Bengaluru</option>
-                                    <option value="Chief Propulsion Engineer - On-Site - Bengaluru" className="bg-black text-white">Chief Propulsion Engineer - On-Site - Bengaluru</option>
-                                    <option value="Lead Turbopump Specialist - On-Site - Bengaluru" className="bg-black text-white">Lead Turbopump Specialist - On-Site - Bengaluru</option>
-                                    <option value="Materials Scientist - On-Site - Bengaluru" className="bg-black text-white">Materials Scientist - On-Site - Bengaluru</option>
-                                    <option value="Combustion Dynamics Expert - On-Site - Bengaluru" className="bg-black text-white">Combustion Dynamics Expert - On-Site - Bengaluru</option>
-                                    <option value="Systems Integration Lead - On-Site - Bengaluru" className="bg-black text-white">Systems Integration Lead - On-Site - Bengaluru</option>
-                                    <option value="Injector Design Principal - On-Site - Bengaluru" className="bg-black text-white">Injector Design Principal - On-Site - Bengaluru</option>
-                                    <option value="Software Developer for Simulations - On-Site - Bengaluru" className="bg-black text-white">Software Developer for Simulations - On-Site - Bengaluru</option>
-                                    <option value="Supply Chain Strategist - On-Site - Bengaluru" className="bg-black text-white">Supply Chain Strategist - On-Site - Bengaluru</option>
-                                    <option value="Thrust Chamber Designer - On-Site - Bengaluru" className="bg-black text-white">Thrust Chamber Designer - On-Site - Bengaluru</option>
-                                    <option value="Project Management Director - On-Site - Bengaluru" className="bg-black text-white">Project Management Director - On-Site - Bengaluru</option>
-                                    <option value="Test Stand Operations Lead - On-Site - Bengaluru" className="bg-black text-white">Test Stand Operations Lead - On-Site - Bengaluru</option>
-                                    <option value="Other" className="bg-black text-white">Other (Please specify)</option>
-                                </select>
+                                <div className="relative">
+                                    <select
+                                        id="role"
+                                        name="role"
+                                        value={formData.role}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="w-full bg-transparent border-0 border-b border-white/20 text-white text-[16px] font-light pb-3 pr-8 focus:outline-none focus:border-white transition-colors appearance-none cursor-pointer"
+                                        style={{
+                                            backgroundImage: 'none',
+                                        }}
+                                    >
+                                        <option value="" className="bg-black text-white/50 py-3">Select a role</option>
+                                        <option value="Valves Design Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Valves Design Engineers - On-Site - Bengaluru</option>
+                                        <option value="Hardware Testing Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Hardware Testing Engineers - On-Site - Bengaluru</option>
+                                        <option value="Thermal Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Thermal Engineers - On-Site - Bengaluru</option>
+                                        <option value="Structural Engineers - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Structural Engineers - On-Site - Bengaluru</option>
+                                        <option value="Cryogenics Engineer - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Cryogenics Engineer - On-Site - Bengaluru</option>
+                                        <option value="Chief Propulsion Engineer - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Chief Propulsion Engineer - On-Site - Bengaluru</option>
+                                        <option value="Lead Turbopump Specialist - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Lead Turbopump Specialist - On-Site - Bengaluru</option>
+                                        <option value="Materials Scientist - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Materials Scientist - On-Site - Bengaluru</option>
+                                        <option value="Combustion Dynamics Expert - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Combustion Dynamics Expert - On-Site - Bengaluru</option>
+                                        <option value="Systems Integration Lead - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Systems Integration Lead - On-Site - Bengaluru</option>
+                                        <option value="Injector Design Principal - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Injector Design Principal - On-Site - Bengaluru</option>
+                                        <option value="Software Developer for Simulations - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Software Developer for Simulations - On-Site - Bengaluru</option>
+                                        <option value="Supply Chain Strategist - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Supply Chain Strategist - On-Site - Bengaluru</option>
+                                        <option value="Thrust Chamber Designer - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Thrust Chamber Designer - On-Site - Bengaluru</option>
+                                        <option value="Project Management Director - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Project Management Director - On-Site - Bengaluru</option>
+                                        <option value="Test Stand Operations Lead - On-Site - Bengaluru" className="bg-black text-white py-3 hover:bg-white/10">Test Stand Operations Lead - On-Site - Bengaluru</option>
+                                        <option value="Other" className="bg-black text-white py-3 hover:bg-white/10">Other (Please specify)</option>
+                                    </select>
+                                    {/* Custom dropdown arrow */}
+                                    <svg
+                                        className="absolute right-0 top-0 w-4 h-4 text-white/50 pointer-events-none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
 
                                 {/* Show text input if "Other" is selected */}
                                 {formData.role === 'Other' && (
