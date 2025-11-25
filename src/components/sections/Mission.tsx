@@ -101,7 +101,7 @@ export default function Mission() {
                     viewport={{ once: true }}
                     className="absolute right-6 top-16 max-w-md"
                 >
-                    <h3 className="text-sm font-medium text-blue-400 mb-2 font-heading uppercase tracking-[0.2em]" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                    <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2 font-heading uppercase tracking-[0.2em]" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                         Our Mission
                     </h3>
                     <h4 className="text-3xl md:text-4xl font-bold text-white mb-6 font-heading uppercase tracking-wide" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
