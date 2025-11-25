@@ -122,12 +122,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                             </AnimatePresence>
                         </div>
                     ))}
-                    <a
-                        href="mailto:launch@cosmicblue.com"
-                        className={`inline-block px-6 py-2 text-xs font-bold tracking-[0.3em] uppercase border-b-2 transition-all duration-300 ${textColor} ${borderColor}`}
-                    >
-                        Launch
-                    </a>
+                    {/* Launch button removed */}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -174,12 +169,6 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                                     )}
                                 </div>
                             ))}
-                            <a
-                                href="mailto:launch@cosmicblue.com"
-                                className="inline-block px-6 py-3 text-white text-sm font-bold tracking-[0.3em] uppercase border-b-2 border-white/30 hover:border-white transition-all duration-300 text-center mt-4"
-                            >
-                                Launch
-                            </a>
                         </div>
                     </motion.div>
                 )}
