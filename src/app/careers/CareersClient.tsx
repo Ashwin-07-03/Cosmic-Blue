@@ -2,10 +2,113 @@
 
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
+import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function CareersClient() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        role: '',
+        linkedinX: '',
+        whyGoodFit: '',
+        contribution: '',
+        currentSalary: '',
+        expectedSalary: '',
+    });
+    const [resume, setResume] = useState<{ file: File | null; base64: string }>({
+        file: null,
+        base64: '',
+    });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        // Check file size (2MB limit)
+        if (file.size > 2 * 1024 * 1024) {
+            toast.error('File size must be less than 2MB');
+            return;
+        }
+
+        // Check file type
+        const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        if (!allowedTypes.includes(file.type)) {
+            toast.error('Only PDF and DOCX files are allowed');
+            return;
+        }
+
+        // Convert to base64
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setResume({
+                file,
+                base64: reader.result as string,
+            });
+        };
+        reader.readAsDataURL(file);
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/api/apply', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    resume: resume.base64,
+                    resumeFileName: resume.file?.name || 'resume.pdf',
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                toast.success('Application submitted successfully!');
+                // Reset form
+                setFormData({
+                    fullName: '',
+                    email: '',
+                    phone: '',
+                    role: '',
+                    linkedinX: '',
+                    whyGoodFit: '',
+                    contribution: '',
+                    currentSalary: '',
+                    expectedSalary: '',
+                });
+                setResume({ file: null, base64: '' });
+                // Reset file input
+                const fileInput = document.getElementById('resume') as HTMLInputElement;
+                if (fileInput) fileInput.value = '';
+            } else {
+                toast.error(data.error || 'Failed to submit application');
+            }
+        } catch (error) {
+            toast.error('Network error. Please try again.');
+            console.error('Error:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <main className="min-h-screen">
+            <Toaster position="top-center" />
             <Navbar theme="dark" />
 
             {/* Section 1: Hero with Video Background */}
@@ -42,8 +145,8 @@ export default function CareersClient() {
                 </div>
             </section>
 
-            {/* Section 2: Apply with Image Background */}
-            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
+            {/* Section 2: Apply with Form */}
+            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden py-20">
                 {/* Image Background */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -51,69 +154,199 @@ export default function CareersClient() {
                         alt="Mountain Peak with Hiker"
                         className="w-full h-full object-cover"
                     />
+                    <div className="absolute inset-0 bg-black/50" />
                 </div>
 
                 {/* Apply Content */}
-                <div className="relative z-10 container mx-auto max-w-3xl text-center px-6 py-20">
-                    <h2 className="text-white font-bold tracking-[0.3em] mb-12 uppercase text-3xl drop-shadow-lg">
+                <div className="relative z-10 container mx-auto max-w-4xl px-6">
+                    <h2 className="text-white font-bold tracking-[0.3em] mb-12 uppercase text-3xl drop-shadow-lg text-center">
                         Apply
                     </h2>
 
-                    <div className="flex flex-col items-center">
-                        <a
-                            href="mailto:ashwin.vk71@gmail.com?subject=Job%20Application%20-%20%5BRole%20Name%5D%20-%20%5BYour%20Name%5D&body=Dear%20Hiring%20Team%2C%0D%0A%0D%0AI%20am%20writing%20to%20express%20my%20interest%20in%20joining%20Cosmic%20Blue.%0D%0A%0D%0A1.%20Role%20Applying%20For%3A%20%5BRole%20Name%5D%0D%0A%0D%0A2.%20Why%20I%27m%20a%20Good%20Fit%3A%0D%0A%5BExplain%20your%20relevant%20skills%20and%20experience%5D%0D%0A%0D%0A3.%20My%20Potential%20Contribution%3A%0D%0A%5BDescribe%20how%20you%20can%20contribute%20to%20Cosmic%20Blue%5D%0D%0A%0D%0A4.%20Current%20Salary%3A%20%5BAmount%5D%0D%0A%0D%0A5.%20Expected%20Salary%3A%20%5BAmount%5D%0D%0A%0D%0A6.%20CV%2FResume%3A%20Attached%0D%0A%0D%0AThank%20you%20for%20considering%20my%20application.%20I%20look%20forward%20to%20discussing%20this%20opportunity%20further.%0D%0A%0D%0ABest%20regards%2C%0D%0A%5BYour%20Full%20Name%5D%0D%0A%5BYour%20Phone%20Number%5D%0D%0A%5BYour%20LinkedIn%2FX%20Profile%5D"
-                            className="group relative inline-flex items-center justify-center w-24 h-24 mb-8 rounded-full border-2 border-white hover:bg-white transition-all duration-500 shadow-lg"
-                            aria-label="Send Application Email"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="32"
-                                height="32"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="text-white group-hover:text-black transition-colors duration-500"
+                    <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md rounded-lg p-8 border border-white/20">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Full Name */}
+                            <div>
+                                <label htmlFor="fullName" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Full Name *
+                                </label>
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    name="fullName"
+                                    value={formData.fullName}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    placeholder="John Doe"
+                                />
+                            </div>
+
+                            {/* Email */}
+                            <div>
+                                <label htmlFor="email" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Email *
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    placeholder="john@example.com"
+                                />
+                            </div>
+
+                            {/* Phone */}
+                            <div>
+                                <label htmlFor="phone" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Phone Number *
+                                </label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    placeholder="+1 234 567 8900"
+                                />
+                            </div>
+
+                            {/* Role */}
+                            <div>
+                                <label htmlFor="role" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Role Applying For *
+                                </label>
+                                <input
+                                    type="text"
+                                    id="role"
+                                    name="role"
+                                    value={formData.role}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    placeholder="Software Engineer"
+                                />
+                            </div>
+
+                            {/* LinkedIn/X */}
+                            <div className="md:col-span-2">
+                                <label htmlFor="linkedinX" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    LinkedIn/X Profile
+                                </label>
+                                <input
+                                    type="url"
+                                    id="linkedinX"
+                                    name="linkedinX"
+                                    value={formData.linkedinX}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    placeholder="https://linkedin.com/in/johndoe"
+                                />
+                            </div>
+
+                            {/* Why Good Fit */}
+                            <div className="md:col-span-2">
+                                <label htmlFor="whyGoodFit" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Why You're a Good Fit * (Min 50 characters)
+                                </label>
+                                <textarea
+                                    id="whyGoodFit"
+                                    name="whyGoodFit"
+                                    value={formData.whyGoodFit}
+                                    onChange={handleInputChange}
+                                    required
+                                    rows={4}
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors resize-none"
+                                    placeholder="Explain your relevant skills and experience..."
+                                />
+                            </div>
+
+                            {/* Contribution */}
+                            <div className="md:col-span-2">
+                                <label htmlFor="contribution" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Your Potential Contribution * (Min 50 characters)
+                                </label>
+                                <textarea
+                                    id="contribution"
+                                    name="contribution"
+                                    value={formData.contribution}
+                                    onChange={handleInputChange}
+                                    required
+                                    rows={4}
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors resize-none"
+                                    placeholder="Describe how you can contribute to Cosmic Blue..."
+                                />
+                            </div>
+
+                            {/* Current Salary */}
+                            <div>
+                                <label htmlFor="currentSalary" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Current Salary
+                                </label>
+                                <input
+                                    type="text"
+                                    id="currentSalary"
+                                    name="currentSalary"
+                                    value={formData.currentSalary}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    placeholder="$80,000"
+                                />
+                            </div>
+
+                            {/* Expected Salary */}
+                            <div>
+                                <label htmlFor="expectedSalary" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Expected Salary
+                                </label>
+                                <input
+                                    type="text"
+                                    id="expectedSalary"
+                                    name="expectedSalary"
+                                    value={formData.expectedSalary}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors"
+                                    placeholder="$100,000"
+                                />
+                            </div>
+
+                            {/* Resume Upload */}
+                            <div className="md:col-span-2">
+                                <label htmlFor="resume" className="block text-white text-sm font-bold mb-2 uppercase tracking-wider">
+                                    Resume/CV * (PDF or DOCX, Max 2MB)
+                                </label>
+                                <input
+                                    type="file"
+                                    id="resume"
+                                    accept=".pdf,.doc,.docx"
+                                    onChange={handleFileChange}
+                                    required
+                                    className="w-full px-4 py-3 bg-black/30 border border-white/30 text-white rounded focus:outline-none focus:border-blue-400 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                                />
+                                {resume.file && (
+                                    <p className="text-white/70 text-sm mt-2">
+                                        Selected: {resume.file.name}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Submit Button */}
+                        <div className="mt-8">
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full px-8 py-4 bg-white text-black font-bold tracking-[0.2em] uppercase hover:bg-blue-400 hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                <rect width="20" height="16" x="2" y="4" rx="2" />
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                            </svg>
-                        </a>
-
-                        <div className="space-y-2 text-white text-sm tracking-widest uppercase mb-12 font-bold drop-shadow-md">
-                            <p>Click the icon to apply</p>
+                                {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                            </button>
                         </div>
-
-                        <div className="max-w-md mx-auto text-left">
-                            <p className="text-white text-sm uppercase tracking-widest mb-6 text-center border-b border-white/30 pb-4 font-bold drop-shadow-md">
-                                Please Include
-                            </p>
-                            <ul className="space-y-4 text-white font-bold drop-shadow-md">
-                                <li className="flex items-baseline gap-4">
-                                    <span className="text-xs text-white/70">01</span>
-                                    <span>The role you are applying for</span>
-                                </li>
-                                <li className="flex items-baseline gap-4">
-                                    <span className="text-xs text-white/70">02</span>
-                                    <span>Why you are a good fit</span>
-                                </li>
-                                <li className="flex items-baseline gap-4">
-                                    <span className="text-xs text-white/70">03</span>
-                                    <span>Your potential contribution</span>
-                                </li>
-                                <li className="flex items-baseline gap-4">
-                                    <span className="text-xs text-white/70">04</span>
-                                    <span>Current & Expected Salary</span>
-                                </li>
-                                <li className="flex items-baseline gap-4">
-                                    <span className="text-xs text-white/70">05</span>
-                                    <span>CV / Resume</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </section>
 
