@@ -64,8 +64,11 @@ export async function POST(request: NextRequest) {
 
         // Send email using Resend
         const { data, error: resendError } = await resend.emails.send({
-            from: 'Cosmic Blue Careers <onboarding@resend.dev>', // Use your verified domain in production
-            to: ['ashwin.vk71@gmail.com', 'gdhanush151@gmail.com', 'srohith5200@gmail.com'],
+            from: 'Cosmic Blue Careers <onboarding@resend.dev>', // Sandbox mode - only sends to ashwin.vk71@gmail.com
+            to: ['ashwin.vk71@gmail.com'], // Sandbox restriction - can only send to verified email
+            // TODO: To send to multiple recipients, verify a domain at resend.com/domains
+            // then update 'from' to use that domain (e.g., 'careers@cosmicblue.com')
+            // and add back: ['ashwin.vk71@gmail.com', 'gdhanush151@gmail.com', 'srohith5200@gmail.com']
             subject: `Job Application - ${validatedData.role} - ${validatedData.fullName}`,
             html: emailHtml,
             attachments: [
