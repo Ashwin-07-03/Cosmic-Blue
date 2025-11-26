@@ -108,7 +108,7 @@ export default function MissionPage() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
