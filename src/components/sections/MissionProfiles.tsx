@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import Image from "next/image";
 
 const profiles = [
     {
@@ -44,10 +44,11 @@ export default function MissionProfiles() {
                 viewport={{ once: true, margin: "-10%" }}
                 className="absolute inset-0 z-0"
             >
-                <img
+                <Image // Replaced img tag with Next.js Image component
                     src="/images/earth-horizon-clean.png"
                     alt="Earth Horizon"
-                    className="w-full h-full object-cover opacity-100"
+                    fill // Added fill prop for background image
+                    className="object-cover opacity-100" // w-full h-full is implied by fill
                 />
                 {/* Minimal overlay for text readability at edges only */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />

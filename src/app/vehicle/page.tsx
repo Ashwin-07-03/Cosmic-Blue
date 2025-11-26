@@ -40,7 +40,7 @@ export default function VehiclePage() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-xl text-gray-400 max-w-2xl mx-auto"
                     >
-                        The world's first fully reusable medium-lift launch vehicle.
+                        The world&apos;s first fully reusable medium-lift launch vehicle.
                     </motion.p>
                 </div>
             </section>

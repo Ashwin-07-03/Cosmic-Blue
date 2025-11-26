@@ -5,12 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
-const navLinks = [
-    { name: "Mission", href: "/#mission" },
-    { name: "Vehicle", href: "/#vehicle" },
-    { name: "Capabilities", href: "/#capabilities" },
-    { name: "Careers", href: "/careers" },
-];
+
 
 interface NavbarProps {
     theme?: "dark" | "light";
@@ -49,7 +44,6 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     const isLight = theme === "light";
     const textColor = isLight ? "text-black" : "text-white";
     const hoverColor = isLight ? "hover:text-gray-600" : "hover:text-gray-300";
-    const borderColor = isLight ? "border-black/30 hover:border-black" : "border-white/30 hover:border-white";
     const logoColor = isLight ? "text-black" : "text-white";
 
     const navLinks = [

@@ -1,71 +1,10 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-
-const stats = [
-    {
-        id: "reuses",
-        label: "Reuses",
-        value: "50+",
-    },
-    {
-        id: "leo",
-        label: "To LEO",
-        value: "6,000kg",
-    },
-    {
-        id: "cost",
-        label: "Cost Per kg",
-        value: "<$1,500",
-    },
-];
-
-const ScrambleText = ({ text, trigger }: { text: string; trigger: boolean }) => {
-    const [display, setDisplay] = useState("");
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
-
-    useEffect(() => {
-        if (!trigger) return;
-
-        let iteration = 0;
-        const interval = setInterval(() => {
-            setDisplay(
-                text
-                    .split("")
-                    .map((char, index) => {
-                        if (index < iteration) {
-                            return text[index];
-                        }
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    })
-                    .join("")
-            );
-
-            if (iteration >= text.length) {
-                clearInterval(interval);
-            }
-
-            iteration += 1 / 3;
-        }, 30);
-
-        return () => clearInterval(interval);
-    }, [text, trigger]);
-
-    return <span>{display}</span>;
-};
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 export default function Mission() {
     const ref = useRef(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-    // Slow down video playback
-    useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.playbackRate = 0.5;
-        }
-    }, []);
 
     return (
         <section id="mission" className="py-40 bg-black relative overflow-hidden min-h-[800px]" ref={ref}>
@@ -73,7 +12,6 @@ export default function Mission() {
             <div className="absolute inset-0 z-0">
                 {/* Video 1 */}
                 <video
-                    ref={videoRef}
                     autoPlay
                     muted
                     playsInline
@@ -108,7 +46,7 @@ export default function Mission() {
                         Space for Everyone
                     </h4>
                     <p className="text-base text-gray-300 leading-relaxed mb-8 max-w-lg" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
-                        We believe that humanity's future lies among the stars. By reducing the cost of launch,
+                        We believe that humanity&apos;s future lies among the stars. By reducing the cost of launch,
                         we open the door to a new era of exploration, innovation, and discovery.
                     </p>
 

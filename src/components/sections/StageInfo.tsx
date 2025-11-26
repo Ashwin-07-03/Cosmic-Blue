@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { cn } from "../ui/Button";
 
 interface Spec {
@@ -24,9 +23,7 @@ export default function StageInfo({
     title,
     subtitle,
     specs,
-    imageSrc,
     isReversed = false,
-    isDark = true,
     badge,
 }: StageInfoProps) {
     // Determine which stage to render

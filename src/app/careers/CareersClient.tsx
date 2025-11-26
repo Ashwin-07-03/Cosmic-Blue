@@ -3,6 +3,7 @@
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function CareersClient() {
@@ -149,7 +150,7 @@ export default function CareersClient() {
                     </h2>
                     <div className="text-base text-white leading-relaxed max-w-3xl mx-auto space-y-4 font-bold">
                         <p>
-                            The primary objective of Cosmic Blue is to enhance life and satisfy the curiosity inherent in humanity. The founders believe that we're not just a space company—we're so much more. Our goal as a company is to inspire people and spark their curiosity about science and space. We want to show them that you don't need to be a scientist to explore science. You don't need a science degree to satisfy your curiosity and work on innovative ideas. As a company, we ensure that schools and colleges don't kill a child's curiosity.
+                            The primary objective of Cosmic Blue is to enhance life and satisfy the curiosity inherent in humanity. The founders believe that we&apos;re not just a space company—we&apos;re so much more. Our goal as a company is to inspire people and spark their curiosity about science and space. We want to show them that you don&apos;t need to be a scientist to explore science. You don&apos;t need a science degree to satisfy your curiosity and work on innovative ideas. As a company, we ensure that schools and colleges don&apos;t kill a child&apos;s curiosity.
                         </p>
                         <p>
                             If you are an individual who is committed to creating something remarkable that will shape the future of both space and this nation, then you should consider pursuing a career with Cosmic Blue.
@@ -162,10 +163,12 @@ export default function CareersClient() {
             <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden py-32">
                 {/* Image Background with Heavy Dark Overlay */}
                 <div className="absolute inset-0 z-0">
-                    <img
+                    <Image
                         src="/images/apply-bg-wide.png"
                         alt="Mountain Peak with Hiker"
-                        className="w-full h-full object-cover opacity-20"
+                        fill
+                        className="object-cover opacity-20"
+                        priority
                     />
                     <div className="absolute inset-0 bg-black/90" />
                 </div>
@@ -331,7 +334,7 @@ export default function CareersClient() {
                         {/* Row 4: Why Good Fit */}
                         <div>
                             <label htmlFor="whyGoodFit" className="block text-white text-[10px] font-light mb-3 uppercase tracking-[0.2em]">
-                                Why You're a Good Fit
+                                Why You&apos;re a Good Fit
                             </label>
                             <textarea
                                 id="whyGoodFit"

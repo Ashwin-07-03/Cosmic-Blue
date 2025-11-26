@@ -1,13 +1,11 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/sections/Navbar";
 
 export default function MissionPage() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
         <main className="bg-black min-h-screen">
@@ -49,10 +47,11 @@ export default function MissionPage() {
             <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-32">
                 {/* Realistic Calm Sky Background */}
                 <div className="absolute inset-0 z-0">
-                    <img
+                    <Image
                         src="/images/deep-blue-small-comets.png"
                         alt="Deep Blue Sky with Comets"
-                        className="absolute inset-0 w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                     />
                     {/* Subtle overlay for text readability */}
                     <div className="absolute inset-0 bg-black/20" />
@@ -71,7 +70,7 @@ export default function MissionPage() {
                             </h2>
                             <div className="space-y-8 text-lg md:text-xl text-white font-medium leading-relaxed drop-shadow-md">
                                 <p>
-                                    We believe that humanity's future lies among the stars. By reducing the cost of launch,
+                                    We believe that humanity&apos;s future lies among the stars. By reducing the cost of launch,
                                     we open the door to a new era of exploration, innovation, and discovery.
                                 </p>
                                 <p>
@@ -102,13 +101,14 @@ export default function MissionPage() {
             {/* Product Roadmap Section - Cosmic Trajectory */}
             <section id="roadmap" className="py-16 relative overflow-hidden">
                 {/* Cosmic Background */}
-                <div className="absolute inset-0 z-0">
-                    <img
-                        src="/images/stratosphere-left-angle-clear.png"
-                        alt="Cosmic Background"
-                        className="absolute inset-0 w-full h-full object-cover"
+                <div className="relative h-[300px] md:h-[400px] w-full rounded-2xl overflow-hidden">
+                    <Image
+                        src="/images/mission-sky.png"
+                        alt="Mission Sky"
+                        fill
+                        className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
