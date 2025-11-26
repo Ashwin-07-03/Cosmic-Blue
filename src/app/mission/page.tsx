@@ -101,14 +101,14 @@ export default function MissionPage() {
             {/* Product Roadmap Section - Cosmic Trajectory */}
             <section id="roadmap" className="py-16 relative overflow-hidden">
                 {/* Cosmic Background */}
-                <div className="relative h-[300px] md:h-[400px] w-full rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/mission-sky.png"
-                        alt="Mission Sky"
+                        src="/images/stratosphere-left-angle-clear.png"
+                        alt="Cosmic Background"
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
