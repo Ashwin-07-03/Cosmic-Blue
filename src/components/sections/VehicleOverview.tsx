@@ -32,11 +32,11 @@ export default function VehicleOverview() {
                     src="/images/vehicle-section-bg.png"
                     alt="Cosmic One Vehicle Background"
                     fill
-                    className="object-contain object-right md:object-center opacity-80"
+                    className="object-contain object-right md:object-center"
                     priority
                 />
                 {/* Gradient Overlay for Text Readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
