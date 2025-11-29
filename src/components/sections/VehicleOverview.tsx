@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const features = [
     {
@@ -24,21 +25,18 @@ const features = [
 
 export default function VehicleOverview() {
     return (
-        <section id="vehicle" className="py-16 relative overflow-hidden bg-gradient-to-b from-[#0f172a] to-black">
-            {/* Technical Background */}
-            <div className="absolute inset-0 z-0 opacity-10">
-                {/* Grid Pattern */}
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(to right, #ffffff 1px, transparent 1px),
-                            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
-                        `,
-                        backgroundSize: '40px 40px',
-                        opacity: 0.1
-                    }}
+        <section id="vehicle" className="py-16 relative overflow-hidden min-h-screen flex items-center bg-black">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0 flex justify-end">
+                <Image
+                    src="/images/vehicle-section-bg.png"
+                    alt="Cosmic One Vehicle Background"
+                    fill
+                    className="object-contain object-right md:object-center opacity-80"
+                    priority
                 />
+                {/* Gradient Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -103,69 +101,9 @@ export default function VehicleOverview() {
                             </Link>
                         </motion.div>
                     </div>
-                    <div className="flex flex-col items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
-                            viewport={{ once: true }}
-                            className="relative flex justify-center items-center h-[500px] w-full"
-                        >
-                            {/* Technical SVG Diagram */}
-                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
-                                <defs>
-                                    <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stopColor="white" stopOpacity="0.1" />
-                                        <stop offset="20%" stopColor="white" stopOpacity="1" />
-                                        <stop offset="80%" stopColor="white" stopOpacity="1" />
-                                        <stop offset="100%" stopColor="white" stopOpacity="0.1" />
-                                    </linearGradient>
-                                </defs>
 
-                                {/* Center Line */}
-                                <line x1="100" y1="20" x2="100" y2="580" stroke="white" strokeOpacity="0.1" strokeDasharray="4 4" />
-
-                                {/* Rocket Outline */}
-                                <g stroke="url(#line-gradient)" strokeWidth="2" fill="none">
-                                    {/* Fairing / Stage 2 */}
-                                    <path d="M100 50 L130 120 L130 250 L70 250 L70 120 Z" />
-                                    <line x1="70" y1="250" x2="130" y2="250" />
-
-                                    {/* Interstage */}
-                                    <path d="M70 250 L70 280 L130 280 L130 250" />
-
-                                    {/* Stage 1 Booster */}
-                                    <path d="M70 280 L70 530 L130 530 L130 280" />
-
-                                    {/* Grid Fins (Simplified) */}
-                                    <path d="M70 300 L55 295 L55 315 L70 310" />
-                                    <path d="M130 300 L145 295 L145 315 L130 310" />
-
-                                    {/* Landing Legs (Stowed) */}
-                                    <path d="M70 530 L60 560 L75 530" />
-                                    <path d="M130 530 L140 560 L125 530" />
-                                </g>
-
-                                {/* Labels */}
-                                <g fill="white" fontSize="10" fontFamily="monospace" opacity="0.8">
-                                    <text x="150" y="180">STAGE 2</text>
-                                    <line x1="135" y1="180" x2="145" y2="180" stroke="white" strokeWidth="1" />
-
-                                    <text x="150" y="400">STAGE 1</text>
-                                    <line x1="135" y1="400" x2="145" y2="400" stroke="white" strokeWidth="1" />
-                                </g>
-                            </svg>
-                        </motion.div>
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 0.6, delay: 0.8 }}
-                            viewport={{ once: true }}
-                            className="text-xs text-gray-500 italic mt-4 text-center"
-                        >
-                            Note: This model is for reference only. The final design is coming soon.
-                        </motion.p>
-                    </div>
+                    {/* Right column is now empty as the image is the background */}
+                    <div className="hidden lg:block"></div>
                 </div>
             </div>
         </section>

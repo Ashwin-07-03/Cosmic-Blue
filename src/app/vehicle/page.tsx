@@ -50,26 +50,24 @@ export default function VehiclePage() {
                 title="The Booster"
                 description="Powered by 9 Prometheus engines, the first stage provides the initial thrust to escape Earth's gravity well. Fully reusable and capable of autonomous landing."
                 specs={[
-                    { label: "Engine Cycle", value: "8x Full-flow Staged Combustion" },
+                    { label: "Engine Cycle", value: "Full-flow Staged Combustion" },
                     { label: "Propellant", value: "LCH4 / LOX" },
-                    { label: "ISP", value: "340s - 380s" },
-                    { label: "Total Thrust", value: "713,000 kgf" }
+                    { label: "ISP", value: "340s - 380s" }
                 ]}
-                imageSrc="/images/booster-grid-fins.jpg" // Placeholder
+                imageSrc="/images/booster-stage.png"
                 isDark={true}
             />
 
             <StageInfo
                 subtitle="Stage 2"
-                title="Payload Delivery"
+                title="Payload Stage"
                 description="The vacuum-optimized second stage ensures precise orbital insertion. Featuring a single expanded-nozzle engine for maximum efficiency in the void of space."
                 isDark={true}
                 isReversed={true}
                 specs={[
-                    { label: "Thrust", value: "1,900 kN" },
                     { label: "Payload to LEO", value: "6ton" }
                 ]}
-                imageSrc="/images/stage2-engine.jpg" // Placeholder
+                imageSrc="/images/payload-stage.png"
             />
 
             <Footer />

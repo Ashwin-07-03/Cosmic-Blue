@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { cn } from "../ui/Button";
 
 interface Spec {
@@ -25,6 +26,7 @@ export default function StageInfo({
     specs,
     isReversed = false,
     badge,
+    imageSrc,
 }: StageInfoProps) {
     // Determine which stage to render
     const isStage1 = subtitle.toLowerCase().includes("stage 1");
@@ -102,65 +104,76 @@ export default function StageInfo({
                             viewport={{ once: true }}
                             className="relative flex justify-center items-center h-[500px] w-full"
                         >
-                            <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
-                                <defs>
-                                    <linearGradient id={`line-gradient-${subtitle}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stopColor="white" stopOpacity="0.1" />
-                                        <stop offset="20%" stopColor="white" stopOpacity="1" />
-                                        <stop offset="80%" stopColor="white" stopOpacity="1" />
-                                        <stop offset="100%" stopColor="white" stopOpacity="0.1" />
-                                    </linearGradient>
-                                </defs>
+                            {imageSrc ? (
+                                <div className="relative w-full h-full flex justify-center items-center">
+                                    <Image
+                                        src={imageSrc}
+                                        alt={title}
+                                        fill
+                                        className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.4)]"
+                                    />
+                                </div>
+                            ) : (
+                                <svg viewBox="0 0 200 600" className="h-full w-auto drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
+                                    <defs>
+                                        <linearGradient id={`line-gradient-${subtitle}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" stopColor="white" stopOpacity="0.1" />
+                                            <stop offset="20%" stopColor="white" stopOpacity="1" />
+                                            <stop offset="80%" stopColor="white" stopOpacity="1" />
+                                            <stop offset="100%" stopColor="white" stopOpacity="0.1" />
+                                        </linearGradient>
+                                    </defs>
 
-                                {/* Center Line */}
-                                <line x1="100" y1="100" x2="100" y2="500" stroke="white" strokeOpacity="0.1" strokeDasharray="4 4" />
+                                    {/* Center Line */}
+                                    <line x1="100" y1="100" x2="100" y2="500" stroke="white" strokeOpacity="0.1" strokeDasharray="4 4" />
 
-                                {isStage1 && (
-                                    /* Stage 1 Only - Booster */
-                                    <g stroke={`url(#line-gradient-${subtitle})`} strokeWidth="2" fill="none">
-                                        {/* Booster Body */}
-                                        <path d="M70 150 L70 450 L130 450 L130 150" />
+                                    {isStage1 && (
+                                        /* Stage 1 Only - Booster */
+                                        <g stroke={`url(#line-gradient-${subtitle})`} strokeWidth="2" fill="none">
+                                            {/* Booster Body */}
+                                            <path d="M70 150 L70 450 L130 450 L130 150" />
 
-                                        {/* Grid Fins */}
-                                        <path d="M70 180 L55 175 L55 195 L70 190" />
-                                        <path d="M130 180 L145 175 L145 195 L130 190" />
+                                            {/* Grid Fins */}
+                                            <path d="M70 180 L55 175 L55 195 L70 190" />
+                                            <path d="M130 180 L145 175 L145 195 L130 190" />
 
-                                        {/* Landing Legs (Deployed) */}
-                                        <path d="M70 450 L50 490 L75 450" />
-                                        <path d="M130 450 L150 490 L125 450" />
+                                            {/* Landing Legs (Deployed) */}
+                                            <path d="M70 450 L50 490 L75 450" />
+                                            <path d="M130 450 L150 490 L125 450" />
 
-                                        {/* Engine Nozzles */}
-                                        <circle cx="85" cy="460" r="8" />
-                                        <circle cx="100" cy="465" r="8" />
-                                        <circle cx="115" cy="460" r="8" />
+                                            {/* Engine Nozzles */}
+                                            <circle cx="85" cy="460" r="8" />
+                                            <circle cx="100" cy="465" r="8" />
+                                            <circle cx="115" cy="460" r="8" />
 
-                                        {/* Label */}
-                                        <text x="150" y="300" fill="white" fontSize="10" fontFamily="monospace" opacity="0.8">STAGE 1</text>
-                                        <line x1="135" y1="300" x2="145" y2="300" stroke="white" strokeWidth="1" />
-                                    </g>
-                                )}
+                                            {/* Label */}
+                                            <text x="150" y="300" fill="white" fontSize="10" fontFamily="monospace" opacity="0.8">STAGE 1</text>
+                                            <line x1="135" y1="300" x2="145" y2="300" stroke="white" strokeWidth="1" />
+                                        </g>
+                                    )}
 
-                                {isStage2 && (
-                                    /* Stage 2 Only - Upper Stage */
-                                    <g stroke={`url(#line-gradient-${subtitle})`} strokeWidth="2" fill="none">
-                                        {/* Fairing / Nose Cone */}
-                                        <path d="M100 120 L130 190 L130 300 L70 300 L70 190 Z" />
+                                    {isStage2 && (
+                                        /* Stage 2 Only - Upper Stage */
+                                        <g stroke={`url(#line-gradient-${subtitle})`} strokeWidth="2" fill="none">
+                                            {/* Fairing / Nose Cone */}
+                                            <path d="M100 120 L130 190 L130 300 L70 300 L70 190 Z" />
 
-                                        {/* Payload Section Divider */}
-                                        <line x1="70" y1="300" x2="130" y2="300" />
+                                            {/* Payload Section Divider */}
+                                            <line x1="70" y1="300" x2="130" y2="300" />
 
-                                        {/* Upper Stage Body */}
-                                        <path d="M70 300 L70 450 L130 450 L130 300" />
+                                            {/* Upper Stage Body */}
+                                            <path d="M70 300 L70 450 L130 450 L130 300" />
 
-                                        {/* Engine Nozzle (Single, Vacuum Optimized) */}
-                                        <path d="M85 450 L80 480 L120 480 L115 450" />
+                                            {/* Engine Nozzle (Single, Vacuum Optimized) */}
+                                            <path d="M85 450 L80 480 L120 480 L115 450" />
 
-                                        {/* Label */}
-                                        <text x="150" y="350" fill="white" fontSize="10" fontFamily="monospace" opacity="0.8">STAGE 2</text>
-                                        <line x1="135" y1="350" x2="145" y2="350" stroke="white" strokeWidth="1" />
-                                    </g>
-                                )}
-                            </svg>
+                                            {/* Label */}
+                                            <text x="150" y="350" fill="white" fontSize="10" fontFamily="monospace" opacity="0.8">STAGE 2</text>
+                                            <line x1="135" y1="350" x2="145" y2="350" stroke="white" strokeWidth="1" />
+                                        </g>
+                                    )}
+                                </svg>
+                            )}
                         </motion.div>
                         <motion.p
                             initial={{ opacity: 0 }}
