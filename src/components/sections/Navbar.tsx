@@ -70,10 +70,10 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
                 <Link href="/" className="flex items-center gap-2 group">
                     <div className="relative h-10 w-56">
                         <Image
-                            src="/images/cosmic-blue-logo-v2.jpg"
+                            src="/images/cosmic-blue-logo-final.png"
                             alt="Cosmic Blue"
                             fill
-                            className="object-contain object-left mix-blend-screen"
+                            className="object-contain object-left"
                             priority
                         />
                     </div>
