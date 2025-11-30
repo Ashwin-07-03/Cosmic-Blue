@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 
 
@@ -44,7 +45,6 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     const isLight = theme === "light";
     const textColor = isLight ? "text-black" : "text-white";
     const hoverColor = isLight ? "hover:text-gray-600" : "hover:text-gray-300";
-    const logoColor = isLight ? "text-black" : "text-white";
 
     const navLinks = [
         {
@@ -68,9 +68,15 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <span className={`text-3xl font-navbar font-bold tracking-widest transition-colors whitespace-nowrap ${logoColor}`}>
-                        COSMIC BLUE
-                    </span>
+                    <div className="relative h-10 w-56">
+                        <Image
+                            src="/images/cosmic-blue-logo-v2.jpg"
+                            alt="Cosmic Blue"
+                            fill
+                            className="object-contain object-left mix-blend-screen"
+                            priority
+                        />
+                    </div>
                 </Link>
 
                 {/* Desktop Navigation */}
