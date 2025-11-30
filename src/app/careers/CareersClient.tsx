@@ -285,7 +285,7 @@ export default function CareersClient() {
                                                         setFormData({ ...formData, role });
                                                         setIsDropdownOpen(false);
                                                     }}
-                                                    className="px-4 py-3 text-black text-[14px] font-light hover:bg-black/5 cursor-pointer transition-colors border-b border-black/5 last:border-b-0"
+                                                    className="px-4 py-3 text-white text-[14px] font-light hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-b-0"
                                                 >
                                                     {role}
                                                 </div>

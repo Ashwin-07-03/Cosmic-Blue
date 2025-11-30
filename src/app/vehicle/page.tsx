@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function VehiclePage() {
     return (
-        <main className="bg-black min-h-screen">
+        <main className="bg-background min-h-screen">
             <Navbar />
 
             {/* Hero / Intro for Vehicle Page */}

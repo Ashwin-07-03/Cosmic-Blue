@@ -35,7 +35,7 @@ const profiles = [
 
 export default function MissionProfiles() {
     return (
-        <section id="capabilities" className="py-20 bg-black relative overflow-hidden min-h-[600px] flex flex-col justify-center">
+        <section id="capabilities" className="py-20 bg-background relative overflow-hidden min-h-[600px] flex flex-col justify-center">
             {/* Background Image - Earthrise Animation */}
             <motion.div
                 initial={{ y: 100, opacity: 0, scale: 1.1 }}

@@ -25,7 +25,7 @@ const features = [
 
 export default function VehicleOverview() {
     return (
-        <section id="vehicle" className="py-16 relative overflow-hidden min-h-screen flex items-center bg-black">
+        <section id="vehicle" className="py-16 relative overflow-hidden min-h-screen flex items-center bg-background">
             {/* Background Image */}
             <div className="absolute inset-0 z-0 flex justify-end">
                 <Image

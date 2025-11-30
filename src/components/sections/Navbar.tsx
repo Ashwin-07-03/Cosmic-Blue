@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -13,34 +13,8 @@ interface NavbarProps {
 }
 
 export default function Navbar({ theme = "dark" }: NavbarProps) {
-    const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-
-            // Determine if scrolled past threshold
-            setIsScrolled(currentScrollY > 50);
-
-            // Determine visibility based on scroll direction
-            if (currentScrollY < lastScrollY || currentScrollY < 100) {
-                // Scrolling up or near top - show navbar
-                setIsVisible(true);
-            } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down and past threshold - hide navbar
-                setIsVisible(false);
-            }
-
-            setLastScrollY(currentScrollY);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [lastScrollY]);
 
     const isLight = theme === "light";
     const textColor = isLight ? "text-black" : "text-white";
@@ -62,18 +36,16 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-                } ${isScrolled ? "py-4" : "py-6"
-                }`}
+            className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent opacity-100 py-3"
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div className="relative h-10 w-56">
+                    <div className="relative h-20 w-96 transition-transform duration-300 hover:scale-105">
                         <Image
-                            src="/images/cosmic-blue-logo-final.png"
+                            src="/images/cosmic-blue-logo-horizontal.png"
                             alt="Cosmic Blue"
                             fill
-                            className="object-contain object-left"
+                            className="object-contain object-left drop-shadow-[0_0_25px_rgba(255,255,255,0.9)] drop-shadow-[0_0_50px_rgba(0,163,255,0.8)] filter brightness-90 contrast-150 saturate-150"
                             priority
                         />
                     </div>

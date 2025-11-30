@@ -8,7 +8,7 @@ import Navbar from "@/components/sections/Navbar";
 export default function MissionPage() {
 
     return (
-        <main className="bg-black min-h-screen">
+        <main className="bg-background min-h-screen">
             <Navbar />
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

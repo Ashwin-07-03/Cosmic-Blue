@@ -7,7 +7,7 @@ export default function Mission() {
     const ref = useRef(null);
 
     return (
-        <section id="mission" className="py-40 bg-black relative overflow-hidden min-h-[800px]" ref={ref}>
+        <section id="mission" className="py-40 bg-background relative overflow-hidden min-h-[800px]" ref={ref}>
             {/* Video Background - Dual videos for seamless loop */}
             <div className="absolute inset-0 z-0">
                 {/* Video 1 */}

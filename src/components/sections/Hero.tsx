@@ -11,7 +11,7 @@ export default function Hero() {
     return (
         <section
             ref={ref}
-            className="relative h-screen w-full overflow-hidden bg-black flex items-center justify-center"
+            className="relative h-screen w-full overflow-hidden bg-background flex items-center justify-center"
         >
             {/* 1. Video Background (Static Position, Fade In) */}
             <motion.div

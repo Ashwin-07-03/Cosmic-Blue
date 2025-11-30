@@ -5,7 +5,7 @@ import { Twitter, Linkedin, Instagram } from "lucide-react";
 
 export default function Contact() {
     return (
-        <section id="contact" className="py-24 bg-black relative">
+        <section id="contact" className="py-24 bg-background relative">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                     {/* Contact Info */}
