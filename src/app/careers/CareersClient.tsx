@@ -260,7 +260,7 @@ export default function CareersClient() {
 
                                     {/* Custom Dropdown Menu */}
                                     {isDropdownOpen && (
-                                        <div className="absolute z-50 w-full mt-2 bg-white border border-white/20 max-h-64 overflow-y-auto shadow-lg">
+                                        <div className="absolute z-50 w-full mt-2 bg-[#0a0a0a] border border-white/20 max-h-64 overflow-y-auto shadow-lg">
                                             {[
                                                 'Valves Design Engineers - On-Site - Bengaluru',
                                                 'Hardware Testing Engineers - On-Site - Bengaluru',
