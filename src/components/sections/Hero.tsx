@@ -37,24 +37,25 @@ export default function Hero() {
             <div className="relative z-10 container mx-auto px-6 pb-32 flex flex-col justify-end h-full text-center">
                 <div className="max-w-3xl mx-auto">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 2.5, ease: "easeOut", delay: 2.0 }}
+                        transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94], delay: 1.5 }}
                     >
-                        <h1 className="text-2xl md:text-4xl font-body font-bold text-white mb-6 tracking-tight leading-tight drop-shadow-lg">
-                            Let&apos;s make space more affordable, accessible and repeatable
+                        <h1 className="text-2xl md:text-4xl font-body font-light text-white mb-6 tracking-tight leading-tight">
+                            Let&apos;s make space more <span className="font-medium">affordable</span>, <span className="font-medium">accessible</span> and <span className="font-medium">repeatable</span>
                         </h1>
 
-                        <p className="text-sm md:text-base text-gray-300 mb-10 uppercase tracking-[0.2em] font-body">
-                            MAKING LAUNCHES AS ROUTINE AS RIDES
+                        <p className="text-xs md:text-sm text-gray-400 mb-12 uppercase tracking-[0.3em] font-light">
+                            Making launches as routine as rides
                         </p>
 
                         <div>
                             <a
                                 href="#mission"
-                                className="inline-block px-8 py-3 text-white text-xs font-bold tracking-[0.2em] uppercase border border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-cosmic-blue hover:shadow-[0_0_20px_rgba(79,195,247,0.4)] transition-all duration-300 rounded-sm"
+                                className="group inline-flex items-center gap-3 px-8 py-3.5 text-white text-[11px] font-light tracking-[0.25em] uppercase border border-white/15 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-cosmic-blue/50 transition-all duration-500 rounded-sm"
                             >
-                                Watch Launch
+                                <span>Watch Launch</span>
+                                <span className="w-4 h-[1px] bg-white/30 group-hover:w-6 group-hover:bg-cosmic-blue transition-all duration-500" />
                             </a>
                         </div>
                     </motion.div>

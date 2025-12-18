@@ -5,41 +5,41 @@ import { Twitter, Linkedin, Instagram } from "lucide-react";
 
 export default function Contact() {
     return (
-        <section id="contact" className="py-24 bg-background relative">
+        <section id="contact" className="py-32 bg-background relative">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
                     {/* Contact Info */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-cosmic-blue font-medium tracking-[0.3em] mb-4 uppercase">
+                        <span className="text-cosmic-blue text-[10px] font-light tracking-[0.3em] mb-6 uppercase block">
                             Contact Us
-                        </h2>
-                        <h3 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8 uppercase tracking-wide">
+                        </span>
+                        <h3 className="text-3xl md:text-4xl font-light text-white mb-8">
                             Ready to Launch?
                         </h3>
-                        <p className="text-lg text-gray-400 mb-12 leading-relaxed">
+                        <p className="text-sm text-gray-400 mb-12 leading-relaxed font-light">
                             Whether you&apos;re looking to book a payload, join our team, or learn more about our technology, we&apos;re here to help.
                         </p>
 
 
                         <div className="space-y-6">
-                            <div className="pb-4 border-b border-white/10">
-                                <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-[0.2em]">Headquarters</h4>
-                                <p className="text-gray-400">1234 Spaceport Way<br />Cape Canaveral, FL 32920</p>
+                            <div className="pb-4 border-b border-white/5">
+                                <h4 className="text-[10px] font-light text-gray-500 mb-2 uppercase tracking-[0.2em]">Headquarters</h4>
+                                <p className="text-sm text-gray-300 font-light">1234 Spaceport Way<br />Cape Canaveral, FL 32920</p>
                             </div>
 
-                            <div className="pb-4 border-b border-white/10">
-                                <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-[0.2em]">Email</h4>
-                                <p className="text-gray-400">launch@cosmicblue.com</p>
+                            <div className="pb-4 border-b border-white/5">
+                                <h4 className="text-[10px] font-light text-gray-500 mb-2 uppercase tracking-[0.2em]">Email</h4>
+                                <p className="text-sm text-gray-300 font-light">launch@cosmicblue.com</p>
                             </div>
 
-                            <div className="pb-4 border-b border-white/10">
-                                <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-[0.2em]">Phone</h4>
-                                <p className="text-gray-400">+1 (555) 123-4567</p>
+                            <div className="pb-4 border-b border-white/5">
+                                <h4 className="text-[10px] font-light text-gray-500 mb-2 uppercase tracking-[0.2em]">Phone</h4>
+                                <p className="text-sm text-gray-300 font-light">+1 (555) 123-4567</p>
                             </div>
                         </div>
 
@@ -49,72 +49,72 @@ export default function Contact() {
                                 <a
                                     key={index}
                                     href="#"
-                                    className="text-gray-500 hover:text-white transition-colors"
+                                    className="text-gray-600 hover:text-white transition-colors duration-300"
                                 >
-                                    <Icon className="w-5 h-5" />
+                                    <Icon className="w-4 h-4" strokeWidth={1.5} />
                                 </a>
                             ))}
                         </div>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                         viewport={{ once: true }}
                     >
-                        <form className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <form className="space-y-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
-                                    <label htmlFor="firstName" className="text-sm font-medium text-gray-300">First Name</label>
+                                    <label htmlFor="firstName" className="text-[10px] font-light text-gray-500 uppercase tracking-[0.2em]">First Name</label>
                                     <input
                                         type="text"
                                         id="firstName"
-                                        className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white focus:outline-none focus:border-cosmic-blue focus:ring-1 focus:ring-cosmic-blue transition-colors placeholder-gray-600"
+                                        className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/10 text-white text-sm font-light focus:outline-none focus:border-cosmic-blue/50 transition-colors placeholder-gray-600"
                                         placeholder="John"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="lastName" className="text-sm font-medium text-gray-300">Last Name</label>
+                                    <label htmlFor="lastName" className="text-[10px] font-light text-gray-500 uppercase tracking-[0.2em]">Last Name</label>
                                     <input
                                         type="text"
                                         id="lastName"
-                                        className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white focus:outline-none focus:border-cosmic-blue focus:ring-1 focus:ring-cosmic-blue transition-colors placeholder-gray-600"
+                                        className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/10 text-white text-sm font-light focus:outline-none focus:border-cosmic-blue/50 transition-colors placeholder-gray-600"
                                         placeholder="Doe"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="email" className="text-sm font-medium text-gray-300">Email</label>
+                                <label htmlFor="email" className="text-[10px] font-light text-gray-500 uppercase tracking-[0.2em]">Email</label>
                                 <input
                                     type="email"
                                     id="email"
-                                    className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white focus:outline-none focus:border-cosmic-blue focus:ring-1 focus:ring-cosmic-blue transition-colors placeholder-gray-600"
+                                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/10 text-white text-sm font-light focus:outline-none focus:border-cosmic-blue/50 transition-colors placeholder-gray-600"
                                     placeholder="john@example.com"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-medium text-gray-300">Subject</label>
+                                <label htmlFor="subject" className="text-[10px] font-light text-gray-500 uppercase tracking-[0.2em]">Subject</label>
                                 <select
                                     id="subject"
-                                    className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white focus:outline-none focus:border-cosmic-blue focus:ring-1 focus:ring-cosmic-blue transition-colors"
+                                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/10 text-white text-sm font-light focus:outline-none focus:border-cosmic-blue/50 transition-colors"
                                 >
-                                    <option value="">Select a topic</option>
-                                    <option value="launch">Book a Launch</option>
-                                    <option value="careers">Careers</option>
-                                    <option value="media">Media Inquiry</option>
-                                    <option value="other">Other</option>
+                                    <option value="" className="bg-background">Select a topic</option>
+                                    <option value="launch" className="bg-background">Book a Launch</option>
+                                    <option value="careers" className="bg-background">Careers</option>
+                                    <option value="media" className="bg-background">Media Inquiry</option>
+                                    <option value="other" className="bg-background">Other</option>
                                 </select>
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium text-gray-300">Message</label>
+                                <label htmlFor="message" className="text-[10px] font-light text-gray-500 uppercase tracking-[0.2em]">Message</label>
                                 <textarea
                                     id="message"
                                     rows={4}
-                                    className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white focus:outline-none focus:border-cosmic-blue focus:ring-1 focus:ring-cosmic-blue transition-colors resize-none placeholder-gray-600"
+                                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/10 text-white text-sm font-light focus:outline-none focus:border-cosmic-blue/50 transition-colors resize-none placeholder-gray-600"
                                     placeholder="How can we help you?"
                                 />
                             </div>
@@ -122,9 +122,10 @@ export default function Contact() {
 
                             <button
                                 type="submit"
-                                className="w-full text-white text-sm tracking-[0.3em] uppercase border-b border-white/30 pb-2 hover:border-white transition-all duration-300 text-center"
+                                className="group inline-flex items-center gap-3 text-white text-[11px] font-light tracking-[0.25em] uppercase border-b border-white/20 pb-2 hover:border-cosmic-blue/50 transition-all duration-500 mt-4"
                             >
-                                Send Message
+                                <span>Send Message</span>
+                                <span className="w-4 h-[1px] bg-white/30 group-hover:w-6 group-hover:bg-cosmic-blue transition-all duration-500" />
                             </button>
                         </form>
                     </motion.div>

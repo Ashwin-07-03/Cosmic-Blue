@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -15,6 +15,33 @@ interface NavbarProps {
 export default function Navbar({ theme = "dark" }: NavbarProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [isAtTop, setIsAtTop] = useState(true);
+
+    // Scroll direction detection
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Check if at top
+            setIsAtTop(currentScrollY < 50);
+
+            // Determine scroll direction
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down & past threshold
+                setIsVisible(false);
+            } else {
+                // Scrolling up
+                setIsVisible(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
     const isLight = theme === "light";
     const textColor = isLight ? "text-black" : "text-white";
@@ -36,16 +63,17 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
 
     return (
         <nav
-            className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent opacity-100 py-3"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-3 bg-transparent ${isVisible ? 'translate-y-0' : '-translate-y-full'
+                }`}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div className="relative h-20 w-96 transition-transform duration-300 hover:scale-105">
+                    <div className="relative h-16 w-80 transition-transform duration-500 hover:scale-[1.02]">
                         <Image
                             src="/images/cosmic-blue-logo-horizontal.png"
                             alt="Cosmic Blue"
                             fill
-                            className="object-contain object-left drop-shadow-[0_0_25px_rgba(255,255,255,0.9)] drop-shadow-[0_0_50px_rgba(0,163,255,0.8)] filter brightness-90 contrast-150 saturate-150"
+                            className="object-contain object-left drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] filter brightness-95 contrast-125"
                             priority
                         />
                     </div>

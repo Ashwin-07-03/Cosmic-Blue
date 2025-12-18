@@ -8,9 +8,8 @@ export default function Mission() {
 
     return (
         <section id="mission" className="py-40 bg-background relative overflow-hidden min-h-[800px]" ref={ref}>
-            {/* Video Background - Dual videos for seamless loop */}
+            {/* Video Background */}
             <div className="absolute inset-0 z-0">
-                {/* Video 1 */}
                 <video
                     autoPlay
                     muted
@@ -18,7 +17,6 @@ export default function Mission() {
                     preload="auto"
                     className="absolute inset-0 w-full h-full object-cover"
                     onEnded={(e) => {
-                        // Restart immediately when ended
                         const video = e.currentTarget;
                         video.currentTime = 0;
                         video.play();
@@ -26,26 +24,35 @@ export default function Mission() {
                 >
                     <source src="/videos/189455-885804454_medium.mp4" type="video/mp4" />
                 </video>
-                {/* Light gradient overlay only */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
+                {/* Gradient overlay for right side text area */}
+                <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10 h-full pt-16">
-                {/* Mission Text - Positioned Absolute Right */}
+                {/* Mission Text - No box, strong text styling */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
+                    transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     viewport={{ once: true }}
                     className="absolute right-6 top-16 max-w-md"
                 >
-                    <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2 uppercase tracking-[0.2em]" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                    <span
+                        className="text-cosmic-blue text-[11px] font-semibold tracking-[0.3em] mb-4 uppercase block"
+                        style={{ textShadow: '0 2px 10px rgba(0,0,0,1), 0 4px 20px rgba(0,0,0,0.8)' }}
+                    >
                         Our Mission
-                    </h3>
-                    <h4 className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-wide" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                    </span>
+                    <h4
+                        className="text-3xl md:text-4xl font-medium text-white mb-6 tracking-wide"
+                        style={{ textShadow: '0 2px 10px rgba(0,0,0,1), 0 4px 25px rgba(0,0,0,0.9)' }}
+                    >
                         Space for Everyone
                     </h4>
-                    <p className="text-base text-gray-300 leading-relaxed mb-8 max-w-lg" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
+                    <p
+                        className="text-sm text-white leading-relaxed mb-10 font-normal"
+                        style={{ textShadow: '0 2px 8px rgba(0,0,0,1), 0 4px 15px rgba(0,0,0,0.8)' }}
+                    >
                         We believe that humanity&apos;s future lies among the stars. By reducing the cost of launch,
                         we open the door to a new era of exploration, innovation, and discovery.
                     </p>
@@ -53,12 +60,14 @@ export default function Mission() {
                     {/* Know More Button */}
                     <a
                         href="/mission"
-                        className="inline-block px-6 py-3 text-white text-xs font-bold tracking-[0.2em] uppercase border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-cosmic-blue transition-all duration-300"
+                        className="group inline-flex items-center gap-3 text-white text-[11px] font-medium tracking-[0.25em] uppercase border-b border-white/50 pb-2 hover:border-cosmic-blue transition-all duration-500"
+                        style={{ textShadow: '0 2px 8px rgba(0,0,0,1)' }}
                     >
-                        Know More →
+                        <span>Know More</span>
+                        <span className="w-4 h-[1px] bg-white/60 group-hover:w-6 group-hover:bg-cosmic-blue transition-all duration-500" />
                     </a>
                 </motion.div>
             </div>
-        </section >
+        </section>
     );
 }

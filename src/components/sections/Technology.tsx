@@ -38,24 +38,24 @@ const technologies = [
 
 export default function Technology() {
     return (
-        <section id="technology" className="py-24 bg-gray-50 relative overflow-hidden">
+        <section id="technology" className="py-32 bg-surface relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-3xl mx-auto text-center mb-20">
-                    <motion.h2
+                <div className="max-w-3xl mx-auto text-center mb-24">
+                    <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        className="text-cosmic-blue font-medium tracking-[0.2em] mb-4 uppercase"
+                        className="text-cosmic-blue text-[10px] font-light tracking-[0.3em] mb-6 uppercase block"
                     >
                         Technology
-                    </motion.h2>
+                    </motion.span>
                     <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-heading font-bold text-cosmic-black mb-6"
+                        className="text-3xl md:text-4xl font-light text-white mb-6"
                     >
                         Engineering the Future
                     </motion.h3>
@@ -64,29 +64,29 @@ export default function Technology() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                         viewport={{ once: true }}
-                        className="text-lg text-gray-600"
+                        className="text-sm text-gray-400 font-light leading-relaxed"
                     >
                         Our vehicles incorporate cutting-edge innovations to maximize performance and minimize cost.
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
                     {technologies.map((tech, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            transition={{ duration: 0.5, delay: index * 0.08 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-xl bg-white border border-gray-200 hover:border-cosmic-blue/30 hover:shadow-lg hover:shadow-cosmic-blue/5 transition-all group"
+                            className="group p-8 bg-surface-elevated/50 hover:bg-surface-interactive/50 transition-all duration-500 cursor-default"
                         >
-                            <div className="mb-6 inline-flex p-3 rounded-lg bg-gray-50 text-cosmic-blue group-hover:bg-cosmic-blue group-hover:text-white transition-colors duration-300">
-                                <tech.icon className="w-6 h-6" />
+                            <div className="mb-6 inline-flex p-3 text-gray-500 group-hover:text-cosmic-blue transition-colors duration-500">
+                                <tech.icon className="w-5 h-5" strokeWidth={1.5} />
                             </div>
-                            <h4 className="text-xl font-bold text-cosmic-black mb-3 group-hover:text-cosmic-blue transition-colors">
+                            <h4 className="text-sm font-medium text-white mb-3 tracking-wide">
                                 {tech.title}
                             </h4>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-xs text-gray-500 leading-relaxed font-light">
                                 {tech.description}
                             </p>
                         </motion.div>

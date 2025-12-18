@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  /* Sophisticated Dark Palette */
+  --background: #030712;
   --foreground: #FFFFFF;
+  --surface: #0a0f1a;
+  --surface-elevated: #111827;
+  --surface-interactive: #1e293b;
 
-  /* Electric Blue Colors */
-  --color-cosmic-blue: #4FC3F7;
-  --color-cosmic-blue-light: #81D4FA;
-  --color-cosmic-blue-dark: #0288D1;
-  --color-electric-blue: #4FC3F7;
+  /* Refined Blue Accent */
+  --color-cosmic-blue: #38bdf8;
+  --color-cosmic-blue-light: #7dd3fc;
+  --color-cosmic-blue-dark: #0284c7;
+  --color-electric-blue: #38bdf8;
+  --color-accent-glow: rgba(56, 189, 248, 0.15);
 
-  /* Dark Black Colors */
-  --color-cosmic-black: #000000;
-  --color-cosmic-black-light: #111111;
+  /* Dark Tones */
+  --color-cosmic-black: #030712;
+  --color-cosmic-black-light: #0a0f1a;
 
-  /* Grays */
-  --color-gray-50: #111111;
-  --color-gray-100: #222222;
-  --color-gray-200: #333333;
-  --color-gray-900: #FFFFFF;
+  /* Refined Grays */
+  --color-gray-50: #0a0f1a;
+  --color-gray-100: #1e293b;
+  --color-gray-200: #334155;
+  --color-gray-300: #475569;
+  --color-gray-400: #64748b;
+  --color-gray-500: #94a3b8;
+  --color-gray-900: #f8fafc;
 }
 
 html {
@@ -28,10 +36,14 @@ html {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-interactive: var(--surface-interactive);
 
   --color-cosmic-blue: var(--color-cosmic-blue);
   --color-cosmic-blue-light: var(--color-cosmic-blue-light);
   --color-cosmic-blue-dark: var(--color-cosmic-blue-dark);
+  --color-accent-glow: var(--color-accent-glow);
 
   --color-cosmic-black: var(--color-cosmic-black);
   --color-cosmic-black-light: var(--color-cosmic-black-light);
