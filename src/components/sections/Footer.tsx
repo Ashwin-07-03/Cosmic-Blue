@@ -4,13 +4,19 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="bg-background text-white py-16 border-t border-white/5">
+        <footer className="section-dark py-20 border-t border-white/5">
             <div className="container mx-auto px-6">
                 {/* Main Footer Content */}
                 <div className="flex flex-col items-center text-center space-y-8 mb-12">
-                    <span className="text-[10px] font-light tracking-[0.4em] uppercase text-gray-500">
+                    {/* Brand */}
+                    <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-sky-blue-light">
                         Cosmic Blue
                     </span>
+
+                    {/* Tagline */}
+                    <p className="text-sm text-gray-400 font-light max-w-md">
+                        Making space accessible for everyone. Pioneering the future of affordable, reusable launch technology.
+                    </p>
 
                     {/* Navigation Links */}
                     <div className="flex flex-wrap justify-center gap-8 md:gap-12">
@@ -38,7 +44,7 @@ export default function Footer() {
                         href="https://www.linkedin.com/company/cosmicblue/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[10px] font-light text-gray-500 hover:text-white transition-colors duration-300 uppercase tracking-[0.2em]"
+                        className="text-[10px] font-light text-gray-500 hover:text-sky-blue-light transition-colors duration-300 uppercase tracking-[0.2em]"
                     >
                         LinkedIn
                     </a>

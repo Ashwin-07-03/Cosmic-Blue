@@ -19,6 +19,10 @@
   --color-cosmic-black: #030712;
   --color-cosmic-black-light: #0a0f1a;
 
+  /* Deep Navy for Footer */
+  --color-deep-navy: #0C1222;
+  --color-deep-navy-light: #1E293B;
+
   /* Refined Grays */
   --color-gray-50: #0a0f1a;
   --color-gray-100: #1e293b;
@@ -47,6 +51,7 @@ html {
 
   --color-cosmic-black: var(--color-cosmic-black);
   --color-cosmic-black-light: var(--color-cosmic-black-light);
+  --color-deep-navy: var(--color-deep-navy);
 
   --font-heading: var(--font-heading), serif;
   --font-navbar: var(--font-navbar), sans-serif;
@@ -87,6 +92,12 @@ body {
   background: rgba(0, 0, 0, 0.25);
   border: 2px solid transparent;
   background-clip: padding-box;
+}
+
+/* Section utility for dark footer */
+.section-dark {
+  background: var(--color-deep-navy);
+  color: white;
 }
 
 @keyframes twinkle {
